@@ -18,9 +18,9 @@ from bson import ObjectId
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = "supersecretkey"
 # MongoDB configuration
 app.config["MONGO_URI"] = "mongodb+srv://thesevasetufoundation:QDBxMA83Wsiamvyb@sevasetu.qplys.mongodb.net/Khack?retryWrites=true&w=majority&tls=true"
-app.secret_key = "supersecretkey"
 mongo = PyMongo(app)
 
 # Google OAuth configuration

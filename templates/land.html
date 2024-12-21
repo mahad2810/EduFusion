@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      z-index: 100;
+    }
+    
+    /* Logo image holder */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Make the logo holder transparent */
+}
+
+/* Logo image styles */
+.logo-image {
+    width: 30px;  /* Set a standard width */
+    height: auto;  /* Automatically adjust the height to maintain aspect ratio */
+    border: none;  /* Remove any border around the image */
+}
+
+    .main-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: calc(100vh - 64px);
+      padding: 0 40px;
+      position: relative;
+    }
+    
+    .content {
+      flex: 1;
+      max-width: 50%;
+      text-align: left;
+      color: white;
+      z-index: 10;
+    }
+    
+    .content .small-text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 7px; /* Reduced gap */
+      margin-left: 25px; /* Moved to the right */
+    }
+  
+    .content .large-text {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 8px; /* Reduced gap */
+      color: black; /* Changed color */
+    }
+  
+    .content p {
+      font-size: 1.25rem;
+      margin-bottom: 24px; /* Reduced gap */
+      max-width: 600px;
+    }
+    
+    .start-button {
+      padding: 12px 24px;
+      background-color: #333333;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      text-decoration: none;
+    }
+    
+    .start-button:hover {
+      background-color: #555555;
+    }
+    
+    .image-holder {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+    }
+
+    .image-holder img {
+      position: absolute;
+      border-radius: 0;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .image-holder .image1 {
+      max-width: 750px; /* Further increase size */
+      top: -550px; /* Move it up slightly */
+      z-index: 1; /* Below image2 but above orbs */
+    }
+
+    .image-holder .image2 {
+      max-width: 350px; /* Ensure it overlaps nicely */
+      z-index: 2; /* On top of image1 */
+    }
+    
+    /* Floating Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 0; /* Below all images */
+    }
+    
+    /* Orb Animations */
+  .orb1 {
+    width: 100px; 
+    height: 100px; 
+    top: 20%; 
+    left: 5%; /* Positioned to the left */
+    animation: orb1 4s ease-in-out infinite;
+  }
+  
+  .orb2 {
+    width: 150px; 
+    height: 150px; 
+    top: 50%; 
+    left: 90%; /* Positioned to the right */
+    animation: orb2 5s ease-in-out infinite;
+  }
+
+  .orb3 {
+    width: 120px; 
+    height: 120px; 
+    top: 80%; 
+    left: 10%; /* Bottom-left side */
+    animation: orb3 3.5s ease-in-out infinite;
+  }
+  
+  .orb4 {
+    width: 80px; 
+    height: 80px; 
+    top: 10%; 
+    left: 85%; /* Top-right side */
+    animation: orb4 6s ease-in-out infinite;
+  }
+  
+  /* Keyframes for Orb Animations */
+  @keyframes orb1 {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-15px) translateX(10px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+
+  @keyframes orb2 {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(10px) translateX(-20px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+
+  @keyframes orb3 {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(20px) translateX(15px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+
+  @keyframes orb4 {
+    0% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-25px) translateX(-10px); }
+    100% { transform: translateY(0px) translateX(0px); }
+  }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+        <img src="static/images/logo.png" alt="Logo" class="logo-image">
+    </div>
+</div>
+
+
+  <div class="main-container">
+    <div class="content">
+      <div class="small-text">Welcome To</div>
+      <div class="large-text">JOYstick</div>
+      <p>Discover new opportunities to learn, collaborate, and grow. Start your journey with us today and make a difference in your learning experience.</p>
+      <a href="/login" class="start-button">Get Started</a>
+    </div>
+    <div class="image-holder">
+      <img src="static/images/bg1.png" alt="Joystick Illustration 1" class="image1">
+      <img src="static/images/laptop.png" alt="Joystick Illustration 2" class="image2">
+    </div>
+  </div>
+
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+
+</body>
+</html>

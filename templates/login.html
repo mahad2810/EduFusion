@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+  
+    /* Floating Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+  
+    .orb1 { animation: orb1 3s ease-in-out infinite; }
+    .orb2 { animation: orb2 4s ease-in-out infinite; }
+    .orb3 { animation: orb3 3.5s ease-in-out infinite; }
+    .orb4 { animation: orb4 5s ease-in-out infinite; }
+    .orb5 { animation: orb1 4.5s ease-in-out infinite; }
+    .orb6 { animation: orb2 3.5s ease-in-out infinite; }
+    .orb7 { animation: orb3 5s ease-in-out infinite; }
+    .orb8 { animation: orb4 4s ease-in-out infinite; }
+  
+    @keyframes orb1 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  
+    @keyframes orb2 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(-10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  
+    @keyframes orb3 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(10px) translateX(15px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  
+    @keyframes orb4 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-25px) translateX(5px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  
+    /* Auth Container */
+    .auth-container {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 32px;
+      max-width: 360px;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+    }
+  
+    .auth-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      color: white;
+      margin-bottom: 24px;
+    }
+  
+    .input-group {
+      margin-bottom: 16px;
+      position: relative;
+      margin-left: -10px;
+      margin-right:10px;
+    }
+  
+    .input-group label {
+      color: white;
+      margin-bottom: 8px;
+      display: block;
+    }
+  
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+  
+    .auth-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #7c55b1;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    .auth-button:hover {
+      background-color: #6a3e9b;
+    }
+  
+    .separator {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 24px 0;
+    }
+  
+    .separator span {
+      margin: 0 16px;
+      color: white;
+    }
+  
+    .separator div {
+      flex-grow: 1;
+      border-top: 1px solid #ccc;
+    }
+  
+    .auth-footer {
+      text-align: center;
+      margin-top: 24px;
+    }
+  
+    .auth-footer a {
+      color: #9e4dce;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  
+    .auth-footer a:hover {
+      text-decoration: underline;
+    }
+  
+    .hidden {
+      display: none;
+    }
+  
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.3s, opacity 0.3s;
+      z-index: 1000;
+    }
+  
+    .modal.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  
+    .modal-content {
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 430px;
+      color: white;
+      box-sizing: border-box; /* Ensures padding does not affect width */
+    }
+    
+    .modal-content input {
+      width: 100%;
+      box-sizing: border-box; /* Ensures padding and border are included in the element's total width */
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+    
+    .modal-header {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  
+    .modal-footer button {
+      margin-top: 10px;
+    }
+  
+    /* Orb Sizes and Positions */
+    .orb1 { width: 70px; height: 70px; left: 15%; top: 30%; }
+    .orb2 { width: 80px; height: 80px; left: 80%; top: 50%; }
+    .orb3 { width: 90px; height: 90px; left: 50%; top: 20%; }
+    .orb4 { width: 60px; height: 60px; left: 10%; top: 80%; }
+    .orb5 { width: 70px; height: 70px; left: 70%; top: 70%; }
+    .orb6 { width: 80px; height: 80px; left: 30%; top: 10%; }
+    .orb7 { width: 85px; height: 85px; left: 60%; top: 40%; }
+    .orb8 { width: 75px; height: 75px; left: 20%; top: 40%; }
+  </style>
+  
+</head>
+<body>
+
+  <div class="orb orb1" style="width: 70px; height: 70px; left: 15%; top: 30%;"></div>
+  <div class="orb orb2" style="width: 80px; height: 80px; left: 80%; top: 50%;"></div>
+  <div class="orb orb3" style="width: 90px; height: 90px; left: 50%; top: 20%;"></div>
+  <div class="orb orb4" style="width: 60px; height: 60px; left: 10%; top: 80%;"></div>
+  <div class="orb orb5" style="width: 70px; height: 70px; left: 70%; top: 70%;"></div>
+  <div class="orb orb6" style="width: 80px; height: 80px; left: 30%; top: 10%;"></div>
+  <div class="orb orb7" style="width: 85px; height: 85px; left: 60%; top: 40%;"></div>
+  <div class="orb orb8" style="width: 75px; height: 75px; left: 20%; top: 40%;"></div>
+
+  <div class="auth-container">
+
+    <div id="login-form">
+      <h2 class="auth-title">Welcome Back</h2>
+      <form action="/login" method="POST">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="auth-button">Log In</button>
+      </form>
+      <button type="button" class="auth-button" id="forgot-password">Forgot Password?</button>
+      <div class="separator">
+        <div></div>
+        <span>Or continue with</span>
+        <div></div>
+      </div>
+      <button type="button" class="auth-button" id="google-sign-in" onclick="window.location.href='/login/google'">Continue with Google</button>
+      <div class="auth-footer">
+        <p>Don't have an account? <a id="toggle-to-signup">Sign Up</a></p>
+      </div>
+    </div>
+
+    <div id="signup-form" class="hidden">
+      <h2 class="auth-title">Create Account</h2>
+      <form action="/signup" method="POST">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <div class="input-group">
+          <label for="signup-email">Email</label>
+          <input type="email" id="signup-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" name="password" placeholder="Enter your password" required>
+        </div>
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+        </div>
+        <button type="submit" class="auth-button">Sign Up</button>
+      </form>
+      <div class="separator">
+        <div></div>
+        <span>Or continue with</span>
+        <div></div>
+      </div>
+      <button type="button" class="auth-button" id="google-sign-up" onclick="window.location.href='/login/google'">Sign Up with Google</button>
+      <div class="auth-footer">
+        <p>Already have an account? <a id="toggle-to-login">Log In</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="forgot-password-modal">
+    <div class="modal-content">
+      <div id="step-email">
+        <h3 class="modal-header">Forgot Password</h3>
+        <p>Enter your email address to receive an OTP.</p>
+        <form id="forgot-password-form">
+          <div class="input-group">
+            <input type="email" id="forgot-email" placeholder="Enter your email" required>
+          </div>
+          <button type="button" class="auth-button" id="send-otp">Send OTP</button>
+        </form>
+      </div>
+      <div id="step-otp" class="hidden">
+        <h3 class="modal-header">Verify OTP</h3>
+        <p>Enter the OTP sent to your email.</p>
+        <form>
+          <div class="input-group">
+            <input type="text" id="otp" placeholder="Enter OTP" required>
+          </div>
+          <button type="button" class="auth-button" id="verify-otp">Verify OTP</button>
+        </form>
+      </div>
+      <div id="step-password" class="hidden">
+        <h3 class="modal-header">Set New Password</h3>
+        <p>Enter your new password.</p>
+        <form>
+          <div class="input-group">
+            <input type="password" id="new-password" placeholder="Enter new password" required>
+          </div>
+          <button type="button" class="auth-button" id="reset-password">Reset Password</button>
+        </form>
+      </div>
+      <button type="button" class="auth-button" id="close-modal">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const toggleToSignup = document.getElementById('toggle-to-signup');
+    const toggleToLogin = document.getElementById('toggle-to-login');
+    const forgotPasswordModal = document.getElementById('forgot-password-modal');
+    const closeModal = document.getElementById('close-modal');
+    const forgotPasswordButton = document.getElementById('forgot-password');
+    const sendOtpButton = document.getElementById('send-otp');
+    const verifyOtpButton = document.getElementById('verify-otp');
+    const resetPasswordButton = document.getElementById('reset-password');
+
+    const stepEmail = document.getElementById('step-email');
+    const stepOtp = document.getElementById('step-otp');
+    const stepPassword = document.getElementById('step-password');
+
+    const forgotEmailInput = document.getElementById('forgot-email');
+    const otpInput = document.getElementById('otp');
+    const newPasswordInput = document.getElementById('new-password');
+
+    // Toggle between login and signup forms
+    toggleToSignup.addEventListener('click', () => {
+      loginForm.classList.add('hidden');
+      signupForm.classList.remove('hidden');
+    });
+
+    toggleToLogin.addEventListener('click', () => {
+      signupForm.classList.add('hidden');
+      loginForm.classList.remove('hidden');
+    });
+
+    // Open the Forgot Password modal
+    forgotPasswordButton.addEventListener('click', () => {
+      forgotPasswordModal.classList.add('show');
+    });
+
+    // Close the Forgot Password modal
+    closeModal.addEventListener('click', () => {
+      forgotPasswordModal.classList.remove('show');
+      stepEmail.classList.remove('hidden');
+      stepOtp.classList.add('hidden');
+      stepPassword.classList.add('hidden');
+    });
+
+    // Handle Send OTP
+    sendOtpButton.addEventListener('click', async () => {
+    const email = forgotEmailInput.value; // Assuming 'forgotEmailInput' is the input element for the email
+    if (!email) {
+        alert('Please enter your email address.');
+        return;
+    }
+
+    try {
+        console.log({ email, otp }); 
+        const response = await fetch('/send-otp', { // Ensure the endpoint matches your Flask route
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }), // Sending email as JSON to the backend
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(errorData.error || 'Failed to send OTP. Please try again.');
+            return;
+        }
+
+        const result = await response.json();
+        if (result.message) {
+            alert(result.message); // Success message from backend
+            stepEmail.classList.add('hidden');
+            stepOtp.classList.remove('hidden');
+        } else {
+            alert('Failed to send OTP. Please try again.');
+        }
+    } catch (error) {
+        console.error('Error sending OTP:', error);
+        alert('An error occurred while sending OTP. Please check your internet connection or contact support.');
+    }
+});
+
+
+    // Handle Verify OTP
+    verifyOtpButton.addEventListener('click', async () => {
+      const email = forgotEmailInput.value;
+      const otp = otpInput.value;
+    
+      console.log('Payload being sent:', { email, otp }); // Debugging
+    
+      if (!otp) {
+        alert('Please enter the OTP.');
+        return;
+      }
+    
+      try {
+        const response = await fetch('/verify-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, otp }),
+        });
+    
+        console.log('Response status:', response.status); // Debugging
+    
+        if (!response.ok) {
+          const errorText = await response.text(); // Read error message from server
+          throw new Error(`${response.status}: ${errorText}`);
+        }
+    
+        const result = await response.json();
+        if (result.message === "OTP verified successfully") {
+          alert('OTP verified successfully.');
+          stepOtp.classList.add('hidden');
+          stepPassword.classList.remove('hidden');
+        } else {
+          alert(result.error || 'Failed to verify OTP.');
+        }
+      } catch (error) {
+        console.error('Error verifying OTP:', error);
+        alert('An error occurred while verifying OTP.');
+      }
+    });
+    
+
+    // Handle Reset Password
+    resetPasswordButton.addEventListener('click', async () => {
+      const email = forgotEmailInput.value;
+      const newPassword = newPasswordInput.value;
+
+      if (!newPassword) {
+        alert('Please enter your new password.');
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/reset-password', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, newPassword }),
+        });
+        
+
+        const result = await response.json();
+        if (result.success) {
+          alert('Password reset successful. Redirecting to login.');
+          forgotPasswordModal.classList.remove('show');
+          stepEmail.classList.remove('hidden');
+          stepOtp.classList.add('hidden');
+          stepPassword.classList.add('hidden');
+        } else {
+          alert(result.message || 'Failed to reset password.');
+        }
+      } catch (error) {
+        console.error('Error resetting password:', error);
+        alert('An error occurred while resetting password.');
+      }
+    });
+</script>
+
+
+</body>
+</html>

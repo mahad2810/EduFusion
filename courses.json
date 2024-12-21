@@ -1,0 +1,476 @@
+[
+    {
+        "Python Programming": {
+            "total_hours": 120,
+            "content": [
+                "Introduction to Python",
+                "Setting Up Python Environment",
+                "Variables, Data Types, and Operators",
+                "Control Structures: Loops and Conditionals",
+                "Functions and Scope",
+                "Advanced Functions: Lambda, Map, Filter, Reduce",
+                "Object-Oriented Programming",
+                "File Handling: Reading/Writing Files",
+                "Working with Libraries: NumPy, Pandas",
+                "Exception Handling and Debugging",
+                "Regular Expressions",
+                "Web Scraping with BeautifulSoup",
+                "Working with APIs and JSON",
+                "Database Connectivity (SQLite, MySQL)",
+                "Testing and Logging",
+                "Introduction to Flask and Django",
+                "Data Visualization (Matplotlib, Seaborn)",
+                "Concurrency and Multiprocessing",
+                "Automation and Scripting",
+                "Real-world Projects"
+            ]
+        }
+    },
+    {
+        "Web Development": {
+            "total_hours": 160,
+            "content": [
+                "Introduction to Web Development",
+                "HTML5: Structure and Semantic Tags",
+                "CSS3: Flexbox, Grid, and Animations",
+                "JavaScript Basics: Variables, DOM Manipulation",
+                "Modern JavaScript (ES6+)",
+                "Frontend Frameworks: React.js and Vue.js",
+                "CSS Preprocessors: SASS and LESS",
+                "Responsive Design with Bootstrap/Tailwind",
+                "RESTful API Integration",
+                "Backend Development with Node.js and Express",
+                "Authentication with JWT and OAuth",
+                "Databases: SQL and NoSQL (MongoDB)",
+                "Version Control with Git and GitHub",
+                "Web Security: XSS, CSRF, CORS",
+                "WebSockets and Real-Time Communication",
+                "DevTools and Performance Optimization",
+                "Deployment with Netlify, Heroku, and Vercel",
+                "Introduction to Docker and CI/CD Pipelines",
+                "Full-Stack Project Development",
+                "Testing with Jest and Cypress"
+            ]
+        }
+    },
+    {
+        "Machine Learning": {
+            "total_hours": 140,
+            "content": [
+                "Introduction to Machine Learning",
+                "Mathematics for ML: Linear Algebra, Calculus, and Statistics",
+                "Data Preprocessing and Cleaning",
+                "Supervised Learning: Regression and Classification",
+                "Unsupervised Learning: Clustering and Dimensionality Reduction",
+                "Feature Engineering and Feature Scaling",
+                "Ensemble Learning: Bagging, Boosting, Random Forest",
+                "Introduction to Deep Learning",
+                "Neural Networks and Backpropagation",
+                "TensorFlow and PyTorch Basics",
+                "Model Evaluation and Cross-Validation",
+                "Hyperparameter Tuning and Optimization",
+                "Time Series Analysis",
+                "Natural Language Processing (NLP)",
+                "Computer Vision Basics",
+                "Deploying ML Models with Flask/Streamlit",
+                "Introduction to MLOps",
+                "Projects: End-to-End ML Pipelines"
+            ]
+        }
+    },
+    {
+        "Data Science": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to Data Science",
+                "Python for Data Science",
+                "Data Collection and Cleaning",
+                "Exploratory Data Analysis (EDA)",
+                "Statistical Analysis and Probability",
+                "Data Visualization: Matplotlib, Seaborn, Plotly",
+                "SQL for Data Analysis",
+                "Machine Learning Foundations",
+                "Supervised and Unsupervised Learning",
+                "Big Data Technologies: Spark and Hadoop",
+                "Data Storytelling and Dashboards (Tableau/Power BI)",
+                "Feature Engineering and Selection",
+                "Time Series Forecasting",
+                "Introduction to NLP and Text Analysis",
+                "Deploying Data Science Models",
+                "Data Science Best Practices",
+                "Real-world Data Science Projects"
+            ]
+        }
+    },
+    {
+        "DevOps": {
+            "total_hours": 130,
+            "content": [
+                "Introduction to DevOps",
+                "Linux Fundamentals and Shell Scripting",
+                "Version Control with Git and GitHub",
+                "Continuous Integration (CI) with Jenkins",
+                "Containerization with Docker",
+                "Orchestration with Kubernetes",
+                "Infrastructure as Code (IaC) with Terraform",
+                "Configuration Management (Ansible, Chef, Puppet)",
+                "Monitoring Tools: Prometheus, Grafana",
+                "Logging Tools: ELK Stack",
+                "Cloud Platforms: AWS, Azure, GCP",
+                "CI/CD Pipelines",
+                "Security and DevSecOps",
+                "Automated Testing with Selenium",
+                "Serverless Computing",
+                "Deployment Strategies and Rollbacks",
+                "DevOps Real-world Projects"
+            ]
+        }
+    },
+    {
+        "Cybersecurity": {
+            "total_hours": 140,
+            "content": [
+                "Introduction to Cybersecurity",
+                "Networking Fundamentals",
+                "Encryption and Hashing",
+                "Common Cyber Threats and Vulnerabilities",
+                "Penetration Testing Basics",
+                "Ethical Hacking Tools: Kali Linux, Metasploit",
+                "Firewalls and Network Security",
+                "Web Security: OWASP Top 10",
+                "Incident Response and Digital Forensics",
+                "SIEM Tools: Splunk and ELK",
+                "Cloud Security Fundamentals",
+                "Security Automation and DevSecOps",
+                "Cryptography Algorithms",
+                "Identity and Access Management",
+                "Threat Analysis and Malware Protection",
+                "Compliance Standards: GDPR, ISO 27001",
+                "Practical Cybersecurity Projects"
+            ]
+        }
+    },
+    {
+        "Blockchain Development": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to Blockchain Technology",
+                "Cryptography Basics",
+                "Bitcoin and Ethereum Fundamentals",
+                "Smart Contracts with Solidity",
+                "Decentralized Applications (DApps)",
+                "Ethereum Virtual Machine (EVM)",
+                "Web3.js and Ether.js",
+                "Consensus Mechanisms (PoW, PoS, etc.)",
+                "Blockchain Development Tools: Hardhat, Truffle",
+                "NFTs and Token Standards (ERC-20, ERC-721)",
+                "DeFi and Decentralized Exchanges",
+                "IPFS and Storage Solutions",
+                "Hyperledger Fabric Basics",
+                "Blockchain Security Best Practices",
+                "Real-world Blockchain Projects"
+            ]
+        }
+    },
+    {
+        "Cloud Computing": {
+            "total_hours": 130,
+            "content": [
+                "Introduction to Cloud Computing",
+                "Cloud Service Models (IaaS, PaaS, SaaS)",
+                "AWS Fundamentals: EC2, S3, Lambda",
+                "Azure Fundamentals",
+                "GCP: Google Cloud Services",
+                "Virtualization and Containers",
+                "Serverless Computing",
+                "Load Balancing and Auto-scaling",
+                "Cloud Storage and Databases",
+                "CI/CD Pipelines in Cloud",
+                "Infrastructure as Code (Terraform, CloudFormation)",
+                "Cloud Security Practices",
+                "Cost Optimization Strategies",
+                "Cloud Monitoring Tools",
+                "Deploying Applications on Cloud Platforms"
+            ]
+        }
+    },
+    {
+        "Artificial Intelligence": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to AI and History",
+                "Search Algorithms",
+                "Game Theory and Decision Trees",
+                "Machine Learning Overview",
+                "Natural Language Processing (NLP)",
+                "Speech Recognition Basics",
+                "Computer Vision with OpenCV",
+                "Neural Networks and Deep Learning",
+                "Generative AI and LLMs",
+                "Reinforcement Learning",
+                "AI Tools: TensorFlow, Keras, PyTorch",
+                "AI Ethics and Applications",
+                "AI Deployment with Flask/Django",
+                "AI in Robotics",
+                "AI Project Development"
+            ]
+        }
+    },
+    {
+        "Game Development": {
+            "total_hours": 160,
+            "content": [
+                "Introduction to Game Development",
+                "Game Engines: Unity and Unreal Engine",
+                "Programming with C# and C++",
+                "2D and 3D Game Design",
+                "Physics and Game Mechanics",
+                "Character Animation",
+                "AI in Games",
+                "Multiplayer Networking",
+                "Virtual Reality (VR) Basics",
+                "Optimizing Game Performance",
+                "Game Testing and Debugging",
+                "Publishing to Platforms (Steam, Play Store)",
+                "Monetization Strategies",
+                "Real-world Game Development Projects"
+            ]
+        }
+    },
+    {
+        "Data Engineering": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to Data Engineering",
+                "Linux and Shell Scripting",
+                "Python for Data Engineering",
+                "SQL and Relational Databases",
+                "NoSQL Databases (MongoDB, Cassandra)",
+                "Big Data Concepts",
+                "Apache Hadoop and HDFS",
+                "Apache Spark and PySpark",
+                "Data Pipelines with Apache Kafka",
+                "ETL Tools and Processes",
+                "Cloud Data Solutions: AWS Redshift, GCP BigQuery",
+                "Airflow for Workflow Automation",
+                "Data Warehousing Concepts",
+                "Data Lake vs Data Warehouse",
+                "Data Quality and Validation",
+                "Real-time Data Processing",
+                "Monitoring and Debugging Pipelines",
+                "Data Engineering on Cloud Platforms",
+                "End-to-End Data Pipeline Projects"
+            ]
+        }
+    },
+    {
+        "Internet of Things (IoT)": {
+            "total_hours": 140,
+            "content": [
+                "Introduction to IoT",
+                "IoT Architecture and Components",
+                "Sensors and Actuators",
+                "Microcontrollers: Arduino and Raspberry Pi",
+                "Networking for IoT: MQTT, HTTP, CoAP",
+                "IoT Communication Protocols",
+                "IoT Platforms: AWS IoT, Azure IoT Hub",
+                "Edge Computing and Fog Computing",
+                "IoT Security Challenges",
+                "Data Collection and Analysis in IoT",
+                "Integration with Cloud Platforms",
+                "Real-Time IoT Dashboards",
+                "IoT Analytics with Python",
+                "Smart Home Automation",
+                "Wearable Devices and Healthcare IoT",
+                "Industrial IoT (IIoT)",
+                "IoT Case Studies and Applications",
+                "IoT Project Development"
+            ]
+        }
+    },
+    {
+        "Augmented Reality (AR) and Virtual Reality (VR)": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to AR and VR",
+                "Difference Between AR, VR, and MR",
+                "Fundamentals of 3D Graphics",
+                "Tools for AR/VR Development: Unity, Unreal Engine",
+                "Scripting with C# for Unity",
+                "Introduction to VR Hardware: Oculus, HTC Vive",
+                "AR Development with ARKit and ARCore",
+                "Marker-based and Markerless AR",
+                "3D Modeling with Blender",
+                "Physics and Interactions in VR",
+                "Spatial Audio Implementation",
+                "XR Optimization Techniques",
+                "Augmented Reality for Mobile Devices",
+                "Virtual Reality for Simulations and Games",
+                "Mixed Reality with HoloLens",
+                "UI/UX Design for AR/VR",
+                "Deploying AR/VR Projects",
+                "Building AR/VR Applications"
+            ]
+        }
+    },
+    {
+        "UI/UX Design": {
+            "total_hours": 120,
+            "content": [
+                "Introduction to UI/UX Design",
+                "Difference Between UI and UX",
+                "Fundamentals of User-Centered Design",
+                "Design Thinking Process",
+                "Wireframing and Prototyping",
+                "UI Design Tools: Figma, Adobe XD, Sketch",
+                "UX Research: User Personas and Journey Mapping",
+                "Interaction Design and Micro-Interactions",
+                "Typography and Color Theory",
+                "Design Systems and Style Guides",
+                "Accessibility in UI/UX",
+                "Usability Testing and Feedback",
+                "Design for Mobile and Web Applications",
+                "Motion Design Basics",
+                "Responsive Design Principles",
+                "Introduction to Design Handoff Tools",
+                "Portfolio Creation",
+                "End-to-End UI/UX Projects"
+            ]
+        }
+    },
+    {
+        "Full-Stack Mobile App Development": {
+            "total_hours": 160,
+            "content": [
+                "Introduction to Mobile App Development",
+                "UI/UX Basics for Mobile Apps",
+                "Frontend with React Native or Flutter",
+                "JavaScript and Dart Fundamentals",
+                "State Management (Redux, Provider, BLoC)",
+                "Backend Development with Node.js and Express",
+                "Database Integration: Firebase, SQLite, MongoDB",
+                "RESTful APIs and GraphQL Integration",
+                "User Authentication and Authorization",
+                "Push Notifications and Messaging",
+                "Native Modules and Device Features",
+                "Mobile App Deployment: Play Store and App Store",
+                "Performance Optimization and Debugging",
+                "CI/CD Pipelines for Mobile Apps",
+                "Testing with Jest and Appium",
+                "Building Real-World Mobile Applications"
+            ]
+        }
+    },
+    {
+        "Kubernetes and Container Orchestration": {
+            "total_hours": 120,
+            "content": [
+                "Introduction to Containerization",
+                "Docker Fundamentals and CLI Commands",
+                "Kubernetes Architecture",
+                "Pods, Services, and Deployments",
+                "Namespaces and Resource Limits",
+                "Kubernetes Networking",
+                "ConfigMaps and Secrets",
+                "Persistent Storage in Kubernetes",
+                "Helm for Package Management",
+                "Kubernetes Monitoring with Prometheus",
+                "Ingress Controllers",
+                "CI/CD Integration with Kubernetes",
+                "K8s Security Best Practices",
+                "Troubleshooting Kubernetes Clusters",
+                "Kubernetes on Cloud Providers (EKS, AKS, GKE)",
+                "Managing Kubernetes at Scale",
+                "Real-world Kubernetes Projects"
+            ]
+        }
+    },
+    {
+        "Big Data Analytics": {
+            "total_hours": 140,
+            "content": [
+                "Introduction to Big Data",
+                "Hadoop Ecosystem: HDFS, MapReduce, YARN",
+                "Data Processing with Apache Spark",
+                "SQL with Apache Hive",
+                "NoSQL Databases: HBase, Cassandra",
+                "Apache Kafka for Streaming Data",
+                "Batch vs Real-Time Data Processing",
+                "ETL Pipelines for Big Data",
+                "Cloud Big Data Platforms: AWS EMR, GCP DataProc",
+                "Data Visualization for Big Data",
+                "Spark MLlib for Machine Learning",
+                "Data Governance and Security",
+                "Performance Optimization for Big Data",
+                "Real-time Analytics with Flink",
+                "End-to-End Big Data Projects"
+            ]
+        }
+    },
+    {
+        "Generative AI and LLMs": {
+            "total_hours": 150,
+            "content": [
+                "Introduction to Generative AI",
+                "Fundamentals of Neural Networks",
+                "Autoencoders and GANs",
+                "Transformer Architecture",
+                "Working with GPT (Generative Pre-trained Transformers)",
+                "Training and Fine-Tuning LLMs",
+                "Tokenization and Embedding Techniques",
+                "NLP Techniques for Generative AI",
+                "Text Generation and Summarization",
+                "Image Generation with Stable Diffusion",
+                "Prompt Engineering and Optimization",
+                "Deploying LLMs with APIs",
+                "Ethics of Generative AI",
+                "Case Studies on Generative Models",
+                "Building Custom AI Applications"
+            ]
+        }
+    },
+    {
+        "SaaS Development": {
+            "total_hours": 130,
+            "content": [
+                "Introduction to SaaS Applications",
+                "SaaS Architecture and Design Principles",
+                "Frontend Frameworks: React.js, Angular",
+                "Backend with Node.js and Django",
+                "Database Design: SQL and NoSQL",
+                "Authentication and User Management",
+                "Subscription Billing with Stripe",
+                "Multi-Tenancy in SaaS Applications",
+                "CI/CD Pipelines for SaaS",
+                "Monitoring and Performance Optimization",
+                "Security Best Practices",
+                "Deploying SaaS on AWS/GCP/Azure",
+                "Integration with Third-Party APIs",
+                "Data Privacy and Compliance",
+                "Building a SaaS MVP"
+            ]
+        }
+    },
+    {
+        "Web3 Development": {
+            "total_hours": 140,
+            "content": [
+                "Introduction to Web3",
+                "Blockchain Basics and Concepts",
+                "Smart Contracts with Solidity",
+                "Ethereum and Decentralized Applications (DApps)",
+                "Web3 Libraries: Web3.js and Ethers.js",
+                "IPFS for Decentralized Storage",
+                "Token Standards: ERC-20 and ERC-721",
+                "Building and Deploying NFTs",
+                "DeFi (Decentralized Finance) Platforms",
+                "Solidity Security and Auditing",
+                "Gas Optimization and Transactions",
+                "Web3 UI with React.js",
+                "Interacting with Wallets: MetaMask",
+                "Deploying Smart Contracts on Testnets",
+                "Real-World Web3 Projects"
+            ]
+        }
+    }
+]

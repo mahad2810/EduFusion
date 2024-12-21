@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #8a3cb8, #6b479c, #336fa5);
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    z-index: 100;
+  }
+  
+  /* Logo image holder */
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; /* Make the logo holder transparent */
+}
+
+/* Logo image styles */
+.logo-image {
+    width: 30px;  /* Set a standard width */
+    height: auto;  /* Automatically adjust the height to maintain aspect ratio */
+    border: none;  /* Remove any border around the image */
+}
+  
+  .navbar .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+  
+  .navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .navbar .nav-links a:hover {
+    color: #8a3cb8;
+  }
+  
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 64px);
+    text-align: center;
+    color: white;
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  
+  .options {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .option {
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 2px solid #8a3cb8;
+    backdrop-filter: blur(10px);
+    padding: 24px 32px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .option:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    z-index: 100; /* Ensures modal is above all other elements */
+  }
+  
+  .modal.show {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .modal-content {
+    position: relative; /* Allows positioning of close button inside modal */
+    background-color: #1d1e2c;
+    border: 3px solid #8a3cb8;
+    border-radius: 16px;
+    padding: 20px;
+    width: 90%; /* Adjusted to fit on smaller screens */
+    max-width: 500px;
+    text-align: center;
+    z-index: 101; /* Modal content remains above everything */
+    color: white;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal-content button {
+    background-color: #6b479c;
+    border: 2px solid #8a3cb8;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .modal-content button:hover {
+    background-color: #5a3a85;
+    transform: scale(1.05);
+  }
+  
+  /* Close button styles */
+  .modal-content .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  /* Form container adjustments */
+  .form-container {
+    max-height: 400px; /* Set a fixed height to enable scrolling */
+    overflow-y: auto; /* Allow vertical scrolling */
+    margin-top: 20px;
+    padding-right: 10px; /* Optional: Adds padding for better UX */
+  }
+  
+  .form-container::-webkit-scrollbar {
+    width: 8px; /* Adjust the scrollbar width */
+  }
+  
+  .form-container::-webkit-scrollbar-thumb {
+    background-color: #8a3cb8; /* Scrollbar color */
+    border-radius: 4px; /* Rounded scrollbar edges */
+  }
+  
+  .form-container::-webkit-scrollbar-thumb:hover {
+    background-color: #6b479c; /* Scrollbar hover color */
+  }
+  
+  
+  .form-container label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #d1d1e0; /* Light gray text for labels */
+  }
+  
+  .form-container input,
+  .form-container textarea {
+    width: 90%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom:10px;
+    border: 1px solid #8a3cb8;
+    color: black; /* Ensures input text is black */
+    background-color: #f9f9f9;
+  }
+  
+  .form-container button {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .orb1, .orb2, .orb3, .orb4, .orb5, .orb6, .orb7, .orb8 {
+    position: absolute;
+    z-index: 1; /* Ensure orbs are below all other elements */
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+  }
+  
+  .orb1 { animation: orb1 3s ease-in-out infinite; }
+  .orb2 { animation: orb2 4s ease-in-out infinite; }
+  .orb3 { animation: orb3 3.5s ease-in-out infinite; }
+  .orb4 { animation: orb4 5s ease-in-out infinite; }
+  .orb5 { animation: orb1 4.5s ease-in-out infinite; }
+  .orb6 { animation: orb2 3.5s ease-in-out infinite; }
+  .orb7 { animation: orb3 5s ease-in-out infinite; }
+  .orb8 { animation: orb4 4s ease-in-out infinite; }
+  
+  @keyframes orb1 {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  @keyframes orb2 {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(-10px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  @keyframes orb3 {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(10px) translateX(15px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+  
+  @keyframes orb4 {
+    0% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-25px) translateX(5px); }
+    100% { transform: translateY(0) translateX(0); }
+  }
+</style>  
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="static/images/logo.png" alt="Logo" class="logo-image">
+  </div>
+    <div class="nav-links">
+      <a href="/dashboard">Dashboard</a>
+      <a href="#">Contact</a>
+      <a href="#">About</a>
+    </div>
+  </div>
+
+  <div class="home-content">
+    <div class="home-title">Welcome to Our Platform</div>
+    <div class="options">
+      <div class="option">Find Companion for Learning</div>
+      <div class="option" id="findGroupProjectsBtn">Find Group Projects</div>
+    </div>
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal-content">
+          <button class="close-btn" id="closeModalBtn">&times;</button>
+          <h2>Group Projects</h2>
+          <button id="createProjectBtn">Create New Project</button>
+          <button id="joinProjectBtn">Join Project</button>
+
+          <div class="form-container" id="formContainer" style="display: none;">
+            <form id="projectForm">
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" name="project_name" required>
+        
+                <label for="projectLead">Project Lead Name</label>
+                <input type="text" id="projectLead" name="project_lead_name" required>
+        
+                <label for="projectDescription">Project Description</label>
+                <textarea id="projectDescription" name="description" rows="3" required></textarea>
+        
+                <label for="skills">Skills Required</label>
+                <input type="text" id="skills" name="skills" required>
+        
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" required>
+        
+                <label for="githubLink">GitHub Link</label>
+                <input type="url" id="githubLink" name="github_link" required>
+        
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="orb orb1" style="width: 100px; height: 100px; top: 10%; left: 20%;"></div>
+  <div class="orb orb2" style="width: 150px; height: 150px; top: 40%; left: 70%;"></div>
+  <div class="orb orb3" style="width: 120px; height: 120px; top: 70%; left: 30%;"></div>
+  <div class="orb orb4" style="width: 80px; height: 80px; top: 20%; left: 80%;"></div>
+
+  <script>
+    const modal = document.getElementById('modal');
+const formContainer = document.getElementById('formContainer');
+const projectForm = document.getElementById('projectForm');
+const findGroupProjectsBtn = document.getElementById('findGroupProjectsBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Ensure the DOM is fully loaded before attaching event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    findGroupProjectsBtn.addEventListener('click', () => {
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+        formContainer.style.display = 'none';
+    });
+
+    document.getElementById('createProjectBtn').addEventListener('click', () => {
+        formContainer.style.display = 'block';
+    });
+
+    projectForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+  
+      // Get skills as an array by splitting the input string by commas
+const skillsArray = projectForm.skills.value
+.split(',')
+.map(skill => skill.trim())
+.filter(skill => skill !== ''); // Ensure no empty skills are included
+
+const projectData = {
+  project_name: projectForm.project_name.value,
+  project_lead_name: projectForm.project_lead_name.value,
+  description: projectForm.description.value,
+  skills: skillsArray, // Use the array of skills
+  city: projectForm.city.value,
+  github_link: projectForm.github_link.value, // Include GitHub link
+  status: 'ongoing'
+};
+
+// Send data to the backend
+fetch('/add_project', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(projectData)
+})
+.then(response => response.json())
+.then(data => {
+  if (data.message) {
+      alert('Project created successfully!');
+      projectForm.reset();
+      formContainer.style.display = 'none';
+  } else {
+      alert('Error: ' + data.error);
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+  alert('An error occurred while saving the project.');
+});
+});
+  
+
+    const joinProjectBtn = document.getElementById('joinProjectBtn');
+
+    joinProjectBtn.addEventListener('click', () => {
+        // Redirect the user to '/project' which will trigger the Flask route
+        window.location.href = '/project';  // Ensure this matches your Flask route
+    });
+});
+
+</script>
+</body>
+</html>

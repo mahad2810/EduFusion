@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 32px;
+        z-index: 100;
+    }
+
+    .navbar .logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .navbar .logout-button {
+        background-color: #6b479c;
+        color: #ffffff;
+        border: 1px solid #8a3cb8;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .navbar .logout-button:hover {
+        background-color: #5a3a85;
+    }
+
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 64px);
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .details {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #8a3cb8;
+        color: white;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .details h2 {
+        margin-bottom: 20px;
+    }
+
+    .details .field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .details .field label {
+        width: 30%;
+        color: #d1d1e0;
+    }
+
+    .details .field span,
+    .details .field input {
+        width: 65%;
+    }
+
+    .details input {
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #8a3cb8;
+        background-color: #f9f9f9;
+        color: #000000;
+        display: none;
+    }
+
+    .details .edit-buttons {
+        margin-top: 20px;
+    }
+
+    .details .edit-buttons button {
+        background-color: #6b479c;
+        color: #ffffff;
+        border: 1px solid #8a3cb8;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .details .edit-buttons button:hover {
+        background-color: #5a3a85;
+    }
+
+    .bottom-section {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #8a3cb8;
+        color: white;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
+
+    .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .tabs button {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 1px solid #8a3cb8;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .tabs button.active, .tabs button:hover {
+        background-color: #5a3a85;
+    }
+
+    .table-container {
+      display: block; /* Ensure the container is visible */
+      overflow-x: auto; /* Allow horizontal scrolling if the table is wider than the container */
+      overflow-y: auto; /* Optional: Allow vertical scrolling */
+      max-height: 100%; /* Limit the height to avoid clipping */
+      padding: 10px; /* Add padding for better spacing */
+  }
+  
+
+    .table-container.active {
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        color: black;
+    }
+
+    table th, table td {
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        text-align: left;
+    }
+
+    /* Modal styles */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+        z-index: 1000;
+    }
+
+    .modal.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background-color: #1d1e2c;
+        padding: 20px;
+        border-radius: 10px;
+        border: 1px solid #8a3cb8;
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        color: #ffffff;
+    }
+
+    .modal-header {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .modal-footer button {
+        margin-top: 10px;
+        background-color: #6b479c;
+        color: #ffffff;
+        border: 1px solid #8a3cb8;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .modal-footer button:hover {
+        background-color: #5a3a85;
+    }
+
+    .field {
+        margin: 20px;
+        font-size: 1rem;
+        color: #ffffff;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #d1d1e0;
+    }
+
+    #edit-college {
+        margin-top: 10px;
+        padding: 8px 12px;
+        background-color: #6b479c;
+        color: #ffffff;
+        border: 1px solid #8a3cb8;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    #edit-college:hover {
+        background-color: #5a3a85;
+    }
+
+    #college-dropdown {
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #f9f9f9;
+        color: #000000;
+        border: 1px solid #8a3cb8;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    th {
+        background-color: #6b479c;
+        color: #ffffff;
+    }
+
+    .members-list {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #8a3cb8;
+        border-radius: 8px;
+        color: #000000;
+    }
+
+    button {
+        padding: 5px 10px;
+        background-color: #6b479c;
+        color: #ffffff;
+        border: 1px solid #8a3cb8;
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #5a3a85;
+    }
+</style>
+
+
+
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">MyLogo</div>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="dashboard">
+    <div class="details">
+        <div class="profile-section">
+            <img src="{{ user.get('profile_picture', 'profile-placeholder.png') }}" alt="Profile Picture">
+            <h2>{{ user.get('name', 'User Profile') }}</h2>
+        </div>
+
+        <div class="field">
+            <label for="name">Name</label>
+            <span>{{ user.get('name', 'Not Provided') }}</span>
+            <input type="text" id="name" value="{{ user.get('name', '') }}" placeholder="Name">
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <span>{{ user.get('email', 'Not Provided') }}</span>
+            <input type="email" id="email" value="{{ user.get('email', '') }}" placeholder="Email" disabled>
+        </div>
+
+        <div class="field">
+            <label for="phone">Phone Number</label>
+            <span>{{ user.get('phone', 'Not Provided') }}</span>
+            <input type="text" id="phone" value="{{ user.get('phone', '') }}" placeholder="Phone Number">
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <span></span>
+            <button type="button" id="edit-password">Edit</button>
+        </div>
+
+        <div class="field">
+          <label for="college">College</label>
+          <span id="selected-college">{{ user.get('college', 'Not Provided') }}</span>
+          <input type="text" id="college-input" value="{{ user.get('college', '') }}" placeholder="Enter your college name" style="display: none;">
+          <small id="college-error" style="color: red; display: none;">Invalid college name.</small>
+        </div>
+        
+        <div class="field">
+            <label for="city">City</label>
+            <span>{{ user.get('city', 'Not Provided') }}</span>
+            <input type="text" id="city" value="{{ user.get('city', '') }}" placeholder="City">
+        </div>
+
+        <div class="field">
+            <label for="state">State</label>
+            <span>{{ user.get('state', 'Not Provided') }}</span>
+            <input type="text" id="state" value="{{ user.get('state', '') }}" placeholder="State">
+        </div>
+
+        <div class="field">
+          <label for="github">GitHub</label>
+          <!-- Display the GitHub URL if provided, otherwise display 'Not Provided' -->
+          <span>{{ user.get('social_media_links', {}).get('github', 'Not Provided') }}</span>
+          <input type="text" id="github" value="{{ user.get('social_media_links', {}).get('github', '') }}" placeholder="Enter GitHub URL">
+      </div>
+      
+      <div class="field">
+          <label for="linkedin">LinkedIn</label>
+          <!-- Display the LinkedIn URL if provided, otherwise display 'Not Provided' -->
+          <span>{{ user.get('social_media_links', {}).get('linkedin', 'Not Provided') }}</span>
+          <input type="text" id="linkedin" value="{{ user.get('social_media_links', {}).get('linkedin', '') }}" placeholder="Enter LinkedIn URL">
+      </div>
+      
+
+        <div class="edit-buttons">
+            <button id="editButton"><img src="edit-sign.png" alt="Edit"></button>
+            <button id="saveButton" style="display: none;">Save</button>
+        </div>
+    </div>
+    <div class="container">
+      <div class="tabs">
+          <button id="skillsTab" class="tab-button active" onclick="toggleTable('skills')">Skills</button>
+          <button id="projectsTab" class="tab-button" onclick="toggleTable('projects')">Projects</button>
+      </div>
+
+      <div id="skillsTable" class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ongoing</th>
+                    <th>Completed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            {% for skill in skills_ongoing %}
+                                <li>{{ skill }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            {% for skill in skills_completed %}
+                                <li>{{ skill }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="projectsTable" class="table-container">
+      <table>
+          <thead>
+              <tr>
+                  <th>Ongoing Projects</th>
+                  <th>Members</th>
+                  <th>Completed Projects</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for project in projects_ongoing %}
+              <tr id="projectRow{{ loop.index }}">
+                  <td>{{ project.project_name }}</td>
+                  <td>
+                      <button onclick="toggleMembers({{ loop.index }})">View</button>
+                      <button onclick="showAddMemberField('{{ loop.index }}')">Add Member</button>
+                      <div id="members{{ loop.index }}" class="members-list" style="display:none;">
+                          <ul>
+                              {% for member in project.members %}
+                              <li>{{ member }}</li>
+                              {% endfor %}
+                          </ul>
+                      </div>
+                      <div id="addMemberField{{ loop.index }}" class="add-member-field" style="display:none;">
+                          <input type="email" id="memberEmail{{ loop.index }}" placeholder="Enter member email">
+                          <button onclick="addMember('{{ loop.index }}')">Add</button>
+                      </div>
+                  </td>
+                  <td></td>
+              </tr>
+              {% endfor %}
+              {% for project in projects_completed %}
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td>{{ project.project_name }}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+  
+</div>
+</div>
+
+<div class="modal" id="forgot-password-modal">
+  <div class="modal-content">
+    <div id="step-email">
+      <h3 class="modal-header">Forgot Password</h3>
+      <p>Enter your email address to receive an OTP.</p>
+      <form id="forgot-password-form">
+        <div class="input-group">
+          <input type="email" id="forgot-email" placeholder="Enter your email" required>
+        </div>
+        <button type="button" class="auth-button" id="send-otp">Send OTP</button>
+      </form>
+    </div>
+    <div id="step-otp" class="hidden">
+      <h3 class="modal-header">Verify OTP</h3>
+      <p>Enter the OTP sent to your email.</p>
+      <form>
+        <div class="input-group">
+          <input type="text" id="otp" placeholder="Enter OTP" required>
+        </div>
+        <button type="button" class="auth-button" id="verify-otp">Verify OTP</button>
+      </form>
+    </div>
+    <div id="step-password" class="hidden">
+      <h3 class="modal-header">Set New Password</h3>
+      <p>Enter your new password.</p>
+      <form>
+        <div class="input-group">
+          <input type="password" id="new-password" placeholder="Enter new password" required>
+        </div>
+        <button type="button" class="auth-button" id="reset-password">Reset Password</button>
+      </form>
+    </div>
+    <button type="button" class="auth-button" id="close-modal">Close</button>
+  </div>
+</div>
+  <script>
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+    const fields = document.querySelectorAll('.field span');
+    const inputs = document.querySelectorAll('.field input');
+    const editPasswordButton = document.getElementById('edit-password');
+    const passwordField = document.getElementById('password');
+    const forgotPasswordModal = document.getElementById('forgot-password-modal');
+    const closeModal = document.getElementById('close-modal');
+    const forgotPasswordButton = document.getElementById('forgot-password');
+    const sendOtpButton = document.getElementById('send-otp');
+    const verifyOtpButton = document.getElementById('verify-otp');
+    const resetPasswordButton = document.getElementById('reset-password');
+    
+    const stepEmail = document.getElementById('step-email');
+    const stepOtp = document.getElementById('step-otp');
+    const stepPassword = document.getElementById('step-password');
+    
+    const forgotEmailInput = document.getElementById('forgot-email');
+    const otpInput = document.getElementById('otp');
+    const newPasswordInput = document.getElementById('new-password');
+    
+    // Toggle edit and save buttons
+    editButton.addEventListener('click', () => {
+        editButton.style.display = 'none';
+        saveButton.style.display = 'block';
+        fields.forEach(field => field.style.display = 'none');
+        inputs.forEach(input => input.style.display = 'block');
+    });
+    
+    // Save user data
+    saveButton.addEventListener('click', async () => {
+      const updatedData = {};
+      const githubUrl = document.getElementById("github").value || null;
+      const linkedinUrl = document.getElementById("linkedin").value || null;
+
+      if (githubUrl) updatedData["social_media_links.github"] = githubUrl;
+      if (linkedinUrl) updatedData["social_media_links.linkedin"] = linkedinUrl;
+
+      try {
+          const response = await fetch('/update_user', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(updatedData),
+          });
+
+          const result = await response.json();
+          if (response.ok && result.success) {
+              alert(result.message || 'User details updated successfully');
+              location.reload();
+          } else {
+              alert(result.message || 'Failed to update user details');
+          }
+      } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred while updating user details.');
+      }
+  });
+    
+    // Logout
+function logout() {
+  fetch('/logout', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  })
+      .then(response => response.json())
+      .then(result => {
+          if (result.success) {
+              alert(result.message || 'Logged out successfully');
+              window.location.href = '/'; // Redirect to landing page
+          } else {
+              alert(result.message || 'Failed to log out');
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while logging out.');
+      });
+}
+
+    // Edit password button
+    editPasswordButton.addEventListener('click', () => {
+        forgotPasswordModal.classList.add('show');
+    
+        // Reset modal steps in case it's not the user's first interaction
+        stepEmail.classList.remove('hidden');
+        stepOtp.classList.add('hidden');
+        stepPassword.classList.add('hidden');
+    });
+    
+    // Open the Forgot Password modal
+    forgotPasswordButton?.addEventListener('click', () => {
+        forgotPasswordModal.classList.add('show');
+    });
+    
+    // Close the Forgot Password modal
+    closeModal.addEventListener('click', () => {
+        forgotPasswordModal.classList.remove('show');
+        stepEmail.classList.remove('hidden');
+        stepOtp.classList.add('hidden');
+        stepPassword.classList.add('hidden');
+    });
+    
+    // Handle Send OTP
+    sendOtpButton.addEventListener('click', async () => {
+        const email = forgotEmailInput.value;
+        if (!email) {
+            alert('Please enter your email address.');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/send-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email }),
+            });
+    
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(errorData.error || 'Failed to send OTP. Please try again.');
+                return;
+            }
+    
+            const result = await response.json();
+            if (result.message) {
+                alert(result.message);
+                stepEmail.classList.add('hidden');
+                stepOtp.classList.remove('hidden');
+            } else {
+                alert('Failed to send OTP. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error sending OTP:', error);
+            alert('An error occurred while sending OTP. Please check your internet connection or contact support.');
+        }
+    });
+    
+    // Handle Verify OTP
+    verifyOtpButton.addEventListener('click', async () => {
+        const email = forgotEmailInput.value;
+        const otp = otpInput.value;
+    
+        if (!otp) {
+            alert('Please enter the OTP.');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, otp }),
+            });
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`${response.status}: ${errorText}`);
+            }
+    
+            const result = await response.json();
+            if (result.message === "OTP verified successfully") {
+                alert('OTP verified successfully.');
+                stepOtp.classList.add('hidden');
+                stepPassword.classList.remove('hidden');
+            } else {
+                alert(result.error || 'Failed to verify OTP.');
+            }
+        } catch (error) {
+            console.error('Error verifying OTP:', error);
+            alert('An error occurred while verifying OTP.');
+        }
+    });
+    
+    // Handle Reset Password
+    resetPasswordButton.addEventListener('click', async () => {
+        const email = forgotEmailInput.value;
+        const newPassword = newPasswordInput.value;
+    
+        if (!newPassword) {
+            alert('Please enter your new password.');
+            return;
+        }
+    
+        try {
+            const response = await fetch('/api/reset-password', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, newPassword }),
+            });
+    
+            const result = await response.json();
+            if (result.success) {
+                alert('Password reset successful. Redirecting to login.');
+                forgotPasswordModal.classList.remove('show');
+                stepEmail.classList.remove('hidden');
+                stepOtp.classList.add('hidden');
+                stepPassword.classList.add('hidden');
+                window.location.href = '/login'; // Redirect to login page
+            } else {
+                alert(result.message || 'Failed to reset password.');
+            }
+        } catch (error) {
+            console.error('Error resetting password:', error);
+            alert('An error occurred while resetting password.');
+        }
+    });
+    
+   
+    const collegeInput = document.getElementById('college-input');
+    const selectedCollegeSpan = document.getElementById('selected-college');
+    const collegeError = document.getElementById('college-error');
+    
+    // Function to validate the college name
+async function validateCollegeName(collegeName) {
+  try {
+    const response = await fetch(`/validate-college?name=${encodeURIComponent(collegeName)}`);
+    if (!response.ok) throw new Error('Validation failed');
+    const result = await response.json();
+    return result.valid;
+  } catch (error) {
+    console.error('Error validating college:', error);
+    return false;
+  }
+}
+
+// Handle edit button click
+editButton.addEventListener('click', () => {
+  editButton.style.display = 'none';
+  saveButton.style.display = 'block';
+  fields.forEach(field => field.style.display = 'none');
+  inputs.forEach(input => input.style.display = 'block');
+});
+
+// Handle save button click
+saveButton.addEventListener('click', async () => {
+  const updatedData = {};
+  let isValid = true;
+
+  // Validate college input
+  const collegeName = collegeInput.value.trim(); // Trim input for cleaner validation
+  if (collegeInput.style.display !== 'none' && collegeName) {
+    const isCollegeValid = await validateCollegeName(collegeName);
+    if (!isCollegeValid) {
+      collegeError.textContent = 'Invalid college name. Please choose a valid one.';
+      collegeError.style.display = 'block';
+      isValid = false;
+    } else {
+      collegeError.style.display = 'none';
+      updatedData.college = collegeName; // Add valid college to update payload
+    }
+  } else if (collegeInput.style.display !== 'none' && !collegeName) {
+    collegeError.textContent = 'College name cannot be empty.';
+    collegeError.style.display = 'block';
+    isValid = false;
+  }
+
+  // If validation fails, stop save operation
+  if (!isValid) return;
+
+  // Collect all other visible input data
+  inputs.forEach(input => {
+    if (input.style.display !== 'none') {
+      updatedData[input.id] = input.value || null;
+    }
+  });
+
+  try {
+    // Send the updated data to the backend
+    const response = await fetch('/update_user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedData),
+    });
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      alert(result.message || 'User details updated successfully');
+      location.reload(); // Reload the page on success
+    } else {
+      alert(result.message || 'Failed to update user details');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred while updating user details.');
+  }
+});
+
+// Handle "blur" event for college input for immediate feedback
+collegeInput.addEventListener('blur', async () => {
+  const collegeName = collegeInput.value.trim();
+  if (collegeName) {
+    const isCollegeValid = await validateCollegeName(collegeName);
+    if (!isCollegeValid) {
+      collegeError.textContent = 'Invalid college name. Please choose a valid one.';
+      collegeError.style.display = 'block';
+    } else {
+      collegeError.style.display = 'none';
+    }
+  } else {
+    collegeError.textContent = 'College name cannot be empty.';
+    collegeError.style.display = 'block';
+  }
+});
+
+function toggleTable(table) {
+  // Hide both tables initially
+  document.getElementById('skillsTable').style.display = 'none';
+  document.getElementById('projectsTable').style.display = 'none';
+
+  // Remove active class from both buttons
+  document.getElementById('skillsTab').classList.remove('active');
+  document.getElementById('projectsTab').classList.remove('active');
+
+  // Show the selected table
+  if (table === 'skills') {
+      document.getElementById('skillsTable').style.display = 'block';
+      document.getElementById('skillsTab').classList.add('active');
+  } else {
+      document.getElementById('projectsTable').style.display = 'block';
+      document.getElementById('projectsTab').classList.add('active');
+  }
+}
+// Initialize the skills table on page load
+window.onload = function() {
+  toggleTable('skills');
+};
+
+function toggleMembers(projectId) {
+  var membersList = document.getElementById('members' + projectId);
+  if (membersList.style.display === 'none') {
+      membersList.style.display = 'block';
+  } else {
+      membersList.style.display = 'none';
+  }
+}
+// Show the Add Member Field
+function showAddMemberField(projectIndex) {
+  // Hide other add member fields if open
+  document.querySelectorAll('.add-member-field').forEach(field => {
+      field.style.display = 'none';
+  });
+  
+  // Show the add member field for the selected project
+  const field = document.getElementById(`addMemberField${projectIndex}`);
+  field.style.display = 'block';
+}
+
+function addMember(projectIndex) {
+  const emailInput = document.getElementById(`memberEmail${projectIndex}`);
+  const email = emailInput.value;
+
+  if (!email) {
+      alert('Please enter a valid email.');
+      return;
+  }
+
+  fetch('/add-member', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+          email: email,
+          projectIndex: projectIndex, // This passes the correct index (starting from 1)
+      }),
+  })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert('Member added successfully!');
+              location.reload(); // Reload to reflect changes
+          } else {
+              alert('Failed to add member: ' + data.message);
+          }
+      })
+      .catch(error => {
+          alert('Error: ' + error);
+      });
+}
+
+</script>
+</body>
+</html>

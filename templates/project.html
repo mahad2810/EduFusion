@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Table</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+    }
+  
+    .container {
+      padding: 20px;
+      overflow-y: auto;
+      height: 100%;
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+  
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+  
+    table th {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+    table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  
+    .filter-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+  
+    .filter-container select {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #8a3cb8;
+      background-color: #6b479c;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+  
+    .filter-container select:hover {
+      background-color: #5a3a85;
+      border-color: #7b3d92;
+    }
+  
+    .button {
+      background-color: #6b479c;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: 1px solid #8a3cb8;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+  
+    .button:hover {
+      background-color: #5a3a85;
+      border-color: #7b3d92;
+    }
+  
+    /* Modal Styles */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0.3s, opacity 0.3s;
+    }
+    
+    .modal.show {
+        visibility: visible;
+        opacity: 1;
+    }
+    
+    .modal-content {
+        background-color: #1d1e2c;
+        border: 1px solid #8a3cb8;
+        border-radius: 10px;
+        padding: 20px;
+        width: 400px;
+        max-height: 80%;
+        overflow-y: auto;
+        color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        position: relative;
+    }
+    
+    /* Modal Header Adjustment */
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        margin-top: 10px; /* Add some space above */
+    }
+    
+    .modal-header h2 {
+        font-size: 1.5rem;
+        color: #8a3cb8;
+        border-bottom: 1px solid #8a3cb8;
+        padding-bottom: 10px;
+        margin: 0; /* Removes default margin */
+        margin-top: 10px; /* Add space above the heading */
+    }
+    
+    .social-links {
+        display: flex;
+        align-items: center;
+        margin-top: 10px; /* Move the icons slightly down */
+    }
+    
+    
+    .social-links a {
+        margin-left: 10px;
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    .social-links i {
+        font-size: 24px;
+    }
+    
+    .social-links a:hover {
+        color: #0073b1; /* LinkedIn blue color when hovered */
+    }
+    
+    .social-links a:first-child:hover {
+        color: #333; /* GitHub color when hovered */
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 1.5rem;
+        color: #d1d1e0;
+        cursor: pointer;
+        z-index: 10;
+    }
+    
+    .modal-content p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .modal-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .modal-content ul li {
+        background: #2a2b3c;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        color: #d1d1e0;
+    }
+    
+    .modal-content button {
+        background-color: #6b479c;
+        color: #ffffff;
+        padding: 10px 15px;
+        border: 1px solid #8a3cb8;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+    
+    .modal-content button:hover {
+        background-color: #5a3a85;
+        border-color: #7b3d92;
+    }
+    
+    /* Skills List */
+    #skillsList {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+    }
+    
+    #skillsList li {
+        background: #2a2b3c;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #d1d1e0;
+    }
+    
+    .skill-name {
+        font-weight: bold;
+    }
+    
+    .skill-status {
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #ffffff;
+    }
+    
+    .skill-status.ongoing {
+        background-color: #ff9800;
+    }
+    
+    .skill-status.completed {
+        background-color: #4caf50;
+    }
+    
+
+  </style>
+  
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Projects Table</h1>
+
+    <div class="filter-container">
+      <select id="skillsFilter">
+        <option value="">Filter by Skills</option>
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+        <option value="HTML">HTML</option>
+      </select>
+      <label for="cityFilter"></label>
+<select id="cityFilter">
+  <option value="">All Cities</option>
+  <option value="Mumbai">Mumbai</option>
+<option value="Delhi">Delhi</option>
+<option value="Bengaluru">Bengaluru</option>
+<option value="Hyderabad">Hyderabad</option>
+<option value="Ahmedabad">Ahmedabad</option>
+<option value="Chennai">Chennai</option>
+<option value="Kolkata">Kolkata</option>
+<option value="Pune">Pune</option>
+<option value="Surat">Surat</option>
+<option value="Jaipur">Jaipur</option>
+
+</select>
+
+      <button class="button" id="filterButton">Apply Filter</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Project Name</th>
+          <th>Project Lead</th>
+        </tr>
+      </thead>
+      <tbody id="projectTable">
+        {% for project in projects %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td class="project-name" data-id="{{ project.id }}">{{ project.name }}</td>
+          <td class="lead-name" data-id="{{ project.id }}">{{ project.lead }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal for Project Details -->
+  <div class="modal" id="projectModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeProjectModal">&times;</span>
+      <h2>Project Details</h2>
+      <p id="projectDescription"></p>
+      <p id="projectSkills"></p>
+      <p id="projectGithubLink"></p>
+    </div>
+  </div>
+
+  <div class="modal" id="leadModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Project Lead Details</h2>
+            <div class="social-links">
+                <a id="githubLink" href="#" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a id="linkedinLink" href="#" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+
+        <span class="close-btn" id="closeLeadModal">&times;</span>
+        
+        <p id="leadDetails"></p>
+        <h3 id="skillsHeading">Skills</h3> <!-- Heading for the skills list -->
+        <ul id="skillsList"></ul> <!-- Skills will be displayed here -->
+        <button id="sendEmailButton">Send Email</button>
+    </div>
+</div>
+
+
+  
+  
+  
+
+  <script>
+    const projects = {{ projects|tojson }};
+const projectTable = document.getElementById('projectTable');
+const projectModal = document.getElementById('projectModal');
+const leadModal = document.getElementById('leadModal');
+
+// Populate the table with projects
+const populateTable = (data) => {
+  projectTable.innerHTML = '';
+  data.forEach((project, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td class="project-name" data-id="${project.id}">${project.name}</td>
+      <td class="lead-name" data-id="${project.id}">${project.lead}</td>
+    `;
+    projectTable.appendChild(row);
+  });
+};
+
+// Initial table population
+populateTable(projects);
+
+// Handle clicks on the project table
+projectTable.addEventListener('click', (e) => {
+  const target = e.target;
+  const projectId = target.dataset.id;
+
+  if (target.classList.contains('lead-name')) {
+    fetch(`/project/lead/${projectId}`)
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error);
+          return;
+        }
+  
+        // Populate lead details
+        const leadDetails = `
+          <strong>Lead Name:</strong> ${data.name || 'N/A'}<br>
+          <strong>Email:</strong> ${data.email || 'N/A'}<br>
+          <strong>College:</strong> ${data.college || 'N/A'}<br>
+          <strong>Phone:</strong> ${data.phone_number || 'N/A'}<br>
+          <strong>Projects:</strong> ${data.projects ? data.projects.join(', ') : 'N/A'}<br>
+          <strong>City:</strong> ${data.city || 'N/A'}<br>
+          <strong>State:</strong> ${data.state || 'N/A'}
+        `;
+        document.getElementById('leadDetails').innerHTML = leadDetails;
+  
+        // Set the GitHub and LinkedIn links dynamically
+        const githubLink = document.getElementById('githubLink');
+        const linkedinLink = document.getElementById('linkedinLink');
+  
+        githubLink.href = data.github || '#'; // Set GitHub link
+        linkedinLink.href = data.linkedin || '#'; // Set LinkedIn link
+  
+        // If no GitHub or LinkedIn, disable the icon (optional)
+        if (!data.github) {
+          githubLink.style.pointerEvents = 'none';
+          githubLink.style.opacity = 0.5;
+        }
+        if (!data.linkedin) {
+          linkedinLink.style.pointerEvents = 'none';
+          linkedinLink.style.opacity = 0.5;
+        }
+  
+        // Populate skills with statuses
+        const skillsHeading = document.getElementById('skillsHeading');
+        const skillsList = document.getElementById('skillsList');
+        skillsList.innerHTML = ''; // Clear previous content
+  
+        if (data.skills && Object.keys(data.skills).length > 0) {
+          skillsHeading.style.display = 'block'; // Show heading
+          for (const [skill, status] of Object.entries(data.skills)) {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+              <span class="skill-name">${skill}</span>
+              <span class="skill-status ${status.toLowerCase()}">${status}</span>
+            `;
+            skillsList.appendChild(listItem);
+          }
+        } else {
+          skillsHeading.style.display = 'none'; // Hide heading if no skills
+          skillsList.innerHTML = '<li>No skills listed</li>';
+        }
+  
+        // Show the modal
+        leadModal.classList.add('show');
+      })
+      .catch(error => {
+        console.error('Error fetching lead details:', error);
+        alert('Failed to load lead details. Please try again.');
+      });
+  }
+  
+
+ // Open Project Modal when clicking on project name
+if (target.classList.contains('project-name')) {
+  const project = projects.find(p => p.id === projectId); // Ensure projectId is valid
+
+  if (project) {
+    // Safely handle project.skills
+    const skillsText = Array.isArray(project.skills) && project.skills.length > 0 
+      ? project.skills.join(', ')  // Join array into a string
+      : 'N/A';  // Fallback if skills is not an array or is empty
+
+    document.getElementById('projectDescription').textContent = `Description: ${project.description || 'N/A'}`;
+    document.getElementById('projectSkills').textContent = `Skills Required: ${skillsText}`;
+    document.getElementById('projectGithubLink').textContent = `GitHub Link: ${project.github_link || 'N/A'}`;
+    projectModal.classList.add('show');
+  } else {
+    alert('Project details not found.');
+  }
+}
+
+});
+
+
+// Close Modals
+const closeModal = (modal) => {
+  modal.classList.remove('show');
+};
+
+document.getElementById('closeProjectModal').addEventListener('click', () => closeModal(projectModal));
+document.getElementById('closeLeadModal').addEventListener('click', () => closeModal(leadModal));
+
+const filterProjects = () => {
+  const skill = document.getElementById('skillsFilter').value.toLowerCase().trim();
+  const city = document.getElementById('cityFilter').value.toLowerCase().trim();
+
+  const filteredProjects = projects.filter(project => {
+    const matchesSkill = !skill || (Array.isArray(project.skills) 
+      ? project.skills.some(s => s.toLowerCase().includes(skill)) 
+      : project.skills.toLowerCase().includes(skill));
+    const matchesCity = !city || project.city.trim().toLowerCase() === city;
+    return matchesSkill && matchesCity;
+  });
+
+  console.log(filteredProjects); // Debugging filtered data
+  populateTable(filteredProjects);
+};
+
+
+document.getElementById('filterButton').addEventListener('click', filterProjects);
+
+
+document.getElementById('filterButton').addEventListener('click', filterProjects);
+
+
+// Send Email Functionality
+document.getElementById('sendEmailButton').addEventListener('click', () => {
+  const emailMatch = document.getElementById('leadDetails').innerText.match(/Email: (.*)/);
+  const email = emailMatch ? emailMatch[1] : '';
+
+  if (email) {
+    const subject = prompt('Enter subject for the email');
+    const message = prompt('Enter your message');
+
+    if (subject && message) {
+      fetch('http://localhost:5000/send_email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, subject, message }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+  } else {
+    alert('Email not found in the lead details.');
+  }
+});
+
+
+
+  </script>
+</body>
+</html>

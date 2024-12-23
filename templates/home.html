@@ -246,6 +246,21 @@
     50% { transform: translateY(-25px) translateX(5px); }
     100% { transform: translateY(0) translateX(0); }
   }
+  .redirect-button {
+    padding: 10px 20px;
+    background-color: #6b479c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.redirect-button:hover {
+    background-color: #8a3cb8;
+    transform: scale(1.05);
+}
 </style>  
 
 </head>
@@ -265,7 +280,10 @@
   <div class="home-content">
     <div class="home-title">Welcome to Our Platform</div>
     <div class="options">
-      <div class="option">Find Companion for Learning</div>
+      <div class="option">
+        <button onclick="location.href='/friends'" class="redirect-button">Find Companion for Learning</button>
+    </div>
+    
       <div class="option" id="findGroupProjectsBtn">Find Group Projects</div>
     </div>
     <div class="modal" id="modal" aria-hidden="true">

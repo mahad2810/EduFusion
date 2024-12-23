@@ -1,0 +1,1487 @@
+[{
+  "_id": {
+    "$oid": "675e7b02f5fe1516100a1890"
+  },
+  "name": "mahadiqbal",
+  "email": "mahad.iqbal.aiml27@heritageit.edu.in",
+  "password": null,
+  "phone_number": "",
+  "college": null,
+  "state": null,
+  "city": "Bengaluru",
+  "social_media_links": {
+    "github": "",
+    "linkedin": ""
+  },
+  "phone": null,
+  "social": null,
+  "projects": [],
+  "skills": {
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  }
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb37546"
+  },
+  "name": "John Doe",
+  "email": "mahadiqbal0@gmail.com",
+  "password": null,
+  "phone_number": "1234567890",
+  "college": "University of Texas",
+  "state": "Texas",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/johndoe",
+    "linkedin": "https://linkedin.com/in/johndoe"
+  },
+  "skills": {
+    "Python": "Intermediate",
+    "Data Analysis": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI for Healthcare",
+      "project_lead_name": "John Doe",
+      "description": "Developing AI models for healthcare solutions",
+      "city": "Ahmedabad",
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb37547"
+  },
+  "name": "Jane Smith",
+  "email": "janesmith@example.com",
+  "password": null,
+  "phone_number": "0987654321",
+  "college": "Stanford University",
+  "state": "California",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/janesmith",
+    "linkedin": "https://linkedin.com/in/janesmith"
+  },
+  "skills": {
+    "Java": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "E-commerce Website",
+      "project_lead_name": "Jane Smith",
+      "description": "Building an e-commerce platform",
+      "city": "Mumbai",
+      "skills": [
+        "Java",
+        "React"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb37548"
+  },
+  "name": "Robert Brown",
+  "email": "robertbrown@example.com",
+  "password": null,
+  "phone_number": "1122334455",
+  "college": "MIT",
+  "state": "Massachusetts",
+  "city": "Jaipur",
+  "social_media_links": {
+    "github": "https://twitter.com/robertbrown",
+    "linkedin": "https://linkedin.com/in/robertbrown"
+  },
+  "skills": {
+    "C++": "Advanced",
+    "Machine Learning": "ongoing",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Self-driving Car",
+      "project_lead_name": "Robert Brown",
+      "description": "Developing a self-driving car system",
+      "city": "Jaipur",
+      "skills": [
+        "C++",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb37549"
+  },
+  "name": "Emily Green",
+  "email": "emilygreen@example.com",
+  "password": null,
+  "phone_number": "2233445566",
+  "college": "University of California, Berkeley",
+  "state": "California",
+  "city": "Pune",
+  "social_media_links": {
+    "github": "https://twitter.com/emilygreen",
+    "linkedin": "https://linkedin.com/in/emilygreen"
+  },
+  "skills": {
+    "Python": "Intermediate",
+    "Data Visualization": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Data Analysis for Climate Change",
+      "project_lead_name": "Emily Green",
+      "description": "Analyzing climate change data",
+      "city": "Pune",
+      "skills": [
+        "Python",
+        "Pandas"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb3754a"
+  },
+  "name": "Michael White",
+  "email": "michaelwhite@example.com",
+  "password": null,
+  "phone_number": "3344556677",
+  "college": "Harvard University",
+  "state": "Massachusetts",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/michaelwhite",
+    "linkedin": "https://linkedin.com/in/michaelwhite"
+  },
+  "skills": {
+    "JavaScript": "Intermediate",
+    "React": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Social Media App",
+      "project_lead_name": "Michael White",
+      "description": "Developing a social media platform",
+      "city": "Ahmedabad",
+      "skills": [
+        "JavaScript",
+        "React"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb3754b"
+  },
+  "name": "Sarah Lee",
+  "email": "sarahlee@example.com",
+  "password": null,
+  "phone_number": "4455667788",
+  "college": "University of Oxford",
+  "state": "Oxford",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/sarahlee",
+    "linkedin": "https://linkedin.com/in/sarahlee"
+  },
+  "skills": {
+    "Machine Learning": "ongoing",
+    "AI Ethics": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI Ethics Research",
+      "project_lead_name": "Sarah Lee",
+      "description": "Researching ethical concerns in AI",
+      "city": "Ahmedabad",
+      "skills": [
+        "Python",
+        "AI"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb3754c"
+  },
+  "name": "David Harris",
+  "email": "davidharris@example.com",
+  "password": null,
+  "phone_number": "5566778899",
+  "college": "Princeton University",
+  "state": "New Jersey",
+  "city": "Kolkata",
+  "social_media_links": {
+    "github": "https://twitter.com/davidharris",
+    "linkedin": "https://linkedin.com/in/davidharris"
+  },
+  "skills": {
+    "Data Science": "completed",
+    "Python": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing"
+  },
+  "projects": [
+    {
+      "project_name": "Data Science for Finance",
+      "project_lead_name": "David Harris",
+      "description": "Building financial models using data science",
+      "city": "Kolkata",
+      "skills": [
+        "Python",
+        "Pandas"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb3754d"
+  },
+  "name": "Anna King",
+  "email": "annaking@example.com",
+  "password": null,
+  "phone_number": "6677889900",
+  "college": "California Institute of Technology",
+  "state": "California",
+  "city": "Delhi",
+  "social_media_links": {
+    "github": "https://twitter.com/annaking",
+    "linkedin": "https://linkedin.com/in/annaking"
+  },
+  "skills": {
+    "Deep Learning": "Intermediate",
+    "Python": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Neural Network for Image Recognition",
+      "project_lead_name": "Anna King",
+      "description": "Developing a neural network for image recognition",
+      "city": "Delhi",
+      "skills": [
+        "Python",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0bd4ac0c3742eb3754e"
+  },
+  "name": "William Clark",
+  "email": "williamclark@example.com",
+  "password": null,
+  "phone_number": "7788990011",
+  "college": "University of Cambridge",
+  "state": "Cambridge",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/williamclark",
+    "linkedin": "https://linkedin.com/in/williamclark"
+  },
+  "skills": {
+    "Web Development": "ongoing",
+    "JavaScript": "Intermediate",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Personal Portfolio",
+      "project_lead_name": "William Clark",
+      "description": "Building a personal portfolio website",
+      "city": "Mumbai",
+      "skills": [
+        "HTML",
+        "JavaScript"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21a"
+  },
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": null,
+  "phone_number": "1234567890",
+  "college": "University of Texas",
+  "state": "Texas",
+  "city": "Delhi",
+  "social_media_links": {
+    "github": "https://twitter.com/johndoe",
+    "linkedin": "https://linkedin.com/in/johndoe"
+  },
+  "skills": {
+    "Python": "Intermediate",
+    "Data Analysis": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI for Healthcare",
+      "project_lead_name": "John Doe",
+      "description": "Developing AI models for healthcare solutions",
+      "city": "Delhi",
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21b"
+  },
+  "name": "Jane Smith",
+  "email": "janesmith@example.com",
+  "password": null,
+  "phone_number": "0987654321",
+  "college": "Stanford University",
+  "state": "California",
+  "city": "Chennai",
+  "social_media_links": {
+    "github": "https://twitter.com/janesmith",
+    "linkedin": "https://linkedin.com/in/janesmith"
+  },
+  "skills": {
+    "Java": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "E-commerce Website",
+      "project_lead_name": "Jane Smith",
+      "description": "Building an e-commerce platform",
+      "city": "Chennai",
+      "skills": [
+        "Java",
+        "React"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21c"
+  },
+  "name": "Robert Brown",
+  "email": "robertbrown@example.com",
+  "password": null,
+  "phone_number": "1122334455",
+  "college": "MIT",
+  "state": "Massachusetts",
+  "city": "Pune",
+  "social_media_links": {
+    "github": "https://twitter.com/robertbrown",
+    "linkedin": "https://linkedin.com/in/robertbrown"
+  },
+  "skills": {
+    "C++": "Advanced",
+    "Machine Learning": "ongoing",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Self-driving Car",
+      "project_lead_name": "Robert Brown",
+      "description": "Developing a self-driving car system",
+      "city": "Pune",
+      "skills": [
+        "C++",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21d"
+  },
+  "name": "Emily Green",
+  "email": "emilygreen@example.com",
+  "password": null,
+  "phone_number": "2233445566",
+  "college": "University of California, Berkeley",
+  "state": "California",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/emilygreen",
+    "linkedin": "https://linkedin.com/in/emilygreen"
+  },
+  "skills": {
+    "Python": "Intermediate",
+    "Data Visualization": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Data Analysis for Climate Change",
+      "project_lead_name": "Emily Green",
+      "description": "Analyzing climate change data",
+      "city": "Mumbai",
+      "skills": [
+        "Python",
+        "Pandas"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21e"
+  },
+  "name": "Michael White",
+  "email": "michaelwhite@example.com",
+  "password": null,
+  "phone_number": "3344556677",
+  "college": "Harvard University",
+  "state": "Massachusetts",
+  "city": "Delhi",
+  "social_media_links": {
+    "github": "https://twitter.com/michaelwhite",
+    "linkedin": "https://linkedin.com/in/michaelwhite"
+  },
+  "skills": {
+    "JavaScript": "Intermediate",
+    "React": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Social Media App",
+      "project_lead_name": "Michael White",
+      "description": "Developing a social media platform",
+      "city": "Delhi",
+      "skills": [
+        "JavaScript",
+        "React"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac21f"
+  },
+  "name": "Sarah Lee",
+  "email": "sarahlee@example.com",
+  "password": null,
+  "phone_number": "4455667788",
+  "college": "University of Oxford",
+  "state": "Oxford",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/sarahlee",
+    "linkedin": "https://linkedin.com/in/sarahlee"
+  },
+  "skills": {
+    "Machine Learning": "ongoing",
+    "AI Ethics": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI Ethics Research",
+      "project_lead_name": "Sarah Lee",
+      "description": "Researching ethical concerns in AI",
+      "city": "Mumbai",
+      "skills": [
+        "Python",
+        "AI"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac220"
+  },
+  "name": "David Harris",
+  "email": "davidharris@example.com",
+  "password": null,
+  "phone_number": "5566778899",
+  "college": "Princeton University",
+  "state": "New Jersey",
+  "city": "Delhi",
+  "social_media_links": {
+    "github": "https://twitter.com/davidharris",
+    "linkedin": "https://linkedin.com/in/davidharris"
+  },
+  "skills": {
+    "Data Science": "completed",
+    "Python": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing"
+  },
+  "projects": [
+    {
+      "project_name": "Data Science for Finance",
+      "project_lead_name": "David Harris",
+      "description": "Building financial models using data science",
+      "city": "Delhi",
+      "skills": [
+        "Python",
+        "Pandas"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac221"
+  },
+  "name": "Anna King",
+  "email": "annaking@example.com",
+  "password": null,
+  "phone_number": "6677889900",
+  "college": "California Institute of Technology",
+  "state": "California",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/annaking",
+    "linkedin": "https://linkedin.com/in/annaking"
+  },
+  "skills": {
+    "Deep Learning": "Intermediate",
+    "Python": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Neural Network for Image Recognition",
+      "project_lead_name": "Anna King",
+      "description": "Developing a neural network for image recognition",
+      "city": "Ahmedabad",
+      "skills": [
+        "Python",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac222"
+  },
+  "name": "William Clark",
+  "email": "williamclark@example.com",
+  "password": null,
+  "phone_number": "7788990011",
+  "college": "University of Cambridge",
+  "state": "Cambridge",
+  "city": "Pune",
+  "social_media_links": {
+    "github": "https://twitter.com/williamclark",
+    "linkedin": "https://linkedin.com/in/williamclark"
+  },
+  "skills": {
+    "Web Development": "ongoing",
+    "JavaScript": "Intermediate",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Personal Portfolio",
+      "project_lead_name": "William Clark",
+      "description": "Building a personal portfolio website",
+      "city": "Pune",
+      "skills": [
+        "HTML",
+        "JavaScript"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac223"
+  },
+  "name": "Olivia Taylor",
+  "email": "oliviataylor@example.com",
+  "password": null,
+  "phone_number": "8899001122",
+  "college": "University of Cambridge",
+  "state": "Cambridge",
+  "city": "Bengaluru",
+  "social_media_links": {
+    "github": "https://twitter.com/oliviataylor",
+    "linkedin": "https://linkedin.com/in/oliviataylor"
+  },
+  "skills": {
+    "Data Science": "completed",
+    "AI": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing"
+  },
+  "projects": [
+    {
+      "project_name": "AI for Healthcare",
+      "project_lead_name": "Olivia Taylor",
+      "description": "Developing AI models for healthcare applications",
+      "city": "Bengaluru",
+      "skills": [
+        "Python",
+        "TensorFlow"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    },
+    {
+      "project_name": "Health Monitoring System",
+      "project_lead_name": "Olivia Taylor",
+      "description": "Designing a system to monitor patient health data",
+      "city": "Bengaluru",
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 2
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac224"
+  },
+  "name": "James Anderson",
+  "email": "jamesanderson@example.com",
+  "password": null,
+  "phone_number": "9900112233",
+  "college": "Stanford University",
+  "state": "California",
+  "city": "Kolkata",
+  "social_media_links": {
+    "github": "https://twitter.com/jamesanderson",
+    "linkedin": "https://linkedin.com/in/jamesanderson"
+  },
+  "skills": {
+    "JavaScript": "Advanced",
+    "React": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "E-commerce Platform",
+      "project_lead_name": "James Anderson",
+      "description": "Developing a modern e-commerce platform",
+      "city": "Kolkata",
+      "skills": [
+        "React",
+        "Node.js"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac225"
+  },
+  "name": "Sophia Wilson",
+  "email": "sophiawilson@example.com",
+  "password": null,
+  "phone_number": "1122334455",
+  "college": "Harvard University",
+  "state": "Massachusetts",
+  "city": "Kolkata",
+  "social_media_links": {
+    "github": "https://twitter.com/sophiawilson",
+    "linkedin": "https://linkedin.com/in/sophiawilson"
+  },
+  "skills": {
+    "Machine Learning": "ongoing",
+    "Deep Learning": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Customer Sentiment Analysis",
+      "project_lead_name": "Sophia Wilson",
+      "description": "Analyzing customer reviews using machine learning",
+      "city": "Kolkata",
+      "skills": [
+        "Python",
+        "NLTK"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac226"
+  },
+  "name": "Benjamin Scott",
+  "email": "benjaminscott@example.com",
+  "password": null,
+  "phone_number": "2233445566",
+  "college": "Princeton University",
+  "state": "New Jersey",
+  "city": "Pune",
+  "social_media_links": {
+    "github": "https://twitter.com/benjaminscott",
+    "linkedin": "https://linkedin.com/in/benjaminscott"
+  },
+  "skills": {
+    "C++": "Advanced",
+    "AI": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI-Driven Chatbot",
+      "project_lead_name": "Benjamin Scott",
+      "description": "Creating an AI-powered chatbot for customer support",
+      "city": "Pune",
+      "skills": [
+        "C++",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac227"
+  },
+  "name": "Charlotte Moore",
+  "email": "charlottemoore@example.com",
+  "password": null,
+  "phone_number": "3344556677",
+  "college": "University of Oxford",
+  "state": "Oxford",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/charlottemoore",
+    "linkedin": "https://linkedin.com/in/charlottemoore"
+  },
+  "skills": {
+    "Data Analysis": "Advanced",
+    "Python": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Data Visualization Tool",
+      "project_lead_name": "Charlotte Moore",
+      "description": "Building a tool to visualize complex data sets",
+      "city": "Ahmedabad",
+      "skills": [
+        "Python",
+        "Matplotlib"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    },
+    {
+      "project_name": "Sales Forecasting",
+      "project_lead_name": "Charlotte Moore",
+      "description": "Developing a predictive model for sales forecasting",
+      "city": "Ahmedabad",
+      "skills": [
+        "Python",
+        "Machine Learning"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 2
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac228"
+  },
+  "name": "Lucas Harris",
+  "email": "lucasharris@example.com",
+  "password": null,
+  "phone_number": "4455667788",
+  "college": "Massachusetts Institute of Technology",
+  "state": "Massachusetts",
+  "city": "Delhi",
+  "social_media_links": {
+    "github": "https://twitter.com/lucasharris",
+    "linkedin": "https://linkedin.com/in/lucasharris"
+  },
+  "skills": {
+    "Web Development": "ongoing",
+    "JavaScript": "Intermediate",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Online Learning Platform",
+      "project_lead_name": "Lucas Harris",
+      "description": "Developing an online learning platform",
+      "city": "Delhi",
+      "skills": [
+        "JavaScript",
+        "Node.js"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac229"
+  },
+  "name": "Amelia Garcia",
+  "email": "ameliagarcia@example.com",
+  "password": null,
+  "phone_number": "5566778899",
+  "college": "California Institute of Technology",
+  "state": "California",
+  "city": "Surat",
+  "social_media_links": {
+    "github": "https://twitter.com/ameliagarcia",
+    "linkedin": "https://linkedin.com/in/ameliagarcia"
+  },
+  "skills": {
+    "Python": "Advanced",
+    "Deep Learning": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Image Classification System",
+      "project_lead_name": "Amelia Garcia",
+      "description": "Building a deep learning-based image classification system",
+      "city": "Surat",
+      "skills": [
+        "Python",
+        "Keras"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    },
+    {
+      "project_name": "AI for Cancer Detection",
+      "project_lead_name": "Amelia Garcia",
+      "description": "Developing an AI model to detect cancer from medical images",
+      "city": "Surat",
+      "skills": [
+        "Python",
+        "TensorFlow"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 2
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22a"
+  },
+  "name": "Ethan Martinez",
+  "email": "ethanmartinez@example.com",
+  "password": null,
+  "phone_number": "6677889900",
+  "college": "Stanford University",
+  "state": "California",
+  "city": "Hyderabad",
+  "social_media_links": {
+    "github": "https://twitter.com/ethanmartinez",
+    "linkedin": "https://linkedin.com/in/ethanmartinez"
+  },
+  "skills": {
+    "Mobile Development": "Advanced",
+    "Android": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Fitness Tracker App",
+      "project_lead_name": "Ethan Martinez",
+      "description": "Building a fitness tracker mobile app",
+      "city": "Hyderabad",
+      "skills": [
+        "Android",
+        "Java"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22b"
+  },
+  "name": "Grace Lee",
+  "email": "gracelee@example.com",
+  "password": null,
+  "phone_number": "7788990011",
+  "college": "Harvard University",
+  "state": "Massachusetts",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/gracelee",
+    "linkedin": "https://linkedin.com/in/gracelee"
+  },
+  "skills": {
+    "UI/UX Design": "Advanced",
+    "Sketch": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "App Interface Redesign",
+      "project_lead_name": "Grace Lee",
+      "description": "Redesigning the user interface of a mobile app",
+      "city": "Mumbai",
+      "skills": [
+        "UI/UX",
+        "Sketch"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    },
+    {
+      "project_name": "Website Overhaul",
+      "project_lead_name": "Grace Lee",
+      "description": "Revamping the user interface of an e-commerce site",
+      "city": "Mumbai",
+      "skills": [
+        "UI/UX",
+        "Figma"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 2
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22c"
+  },
+  "name": "Zachary Robinson",
+  "email": "zacharyrobinson@example.com",
+  "password": null,
+  "phone_number": "8899001122",
+  "college": "University of Oxford",
+  "state": "Oxford",
+  "city": "Jaipur",
+  "social_media_links": {
+    "github": "https://twitter.com/zacharyrobinson",
+    "linkedin": "https://linkedin.com/in/zacharyrobinson"
+  },
+  "skills": {
+    "Blockchain": "Intermediate",
+    "Python": "Beginner",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Blockchain for Finance",
+      "project_lead_name": "Zachary Robinson",
+      "description": "Exploring blockchain applications in finance",
+      "city": "Jaipur",
+      "skills": [
+        "Python",
+        "Blockchain"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22d"
+  },
+  "name": "Avery Collins",
+  "email": "averycollins@example.com",
+  "password": null,
+  "phone_number": "1122334455",
+  "college": "University of Cambridge",
+  "state": "Cambridge",
+  "city": "Mumbai",
+  "social_media_links": {
+    "github": "https://twitter.com/averycollins",
+    "linkedin": "https://linkedin.com/in/averycollins"
+  },
+  "skills": {
+    "Data Engineering": "Advanced",
+    "SQL": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Data Pipeline for Marketing",
+      "project_lead_name": "Avery Collins",
+      "description": "Building a data pipeline to handle marketing data",
+      "city": "Mumbai",
+      "skills": [
+        "SQL",
+        "Python"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22e"
+  },
+  "name": "Elijah Adams",
+  "email": "elijahadams@example.com",
+  "password": null,
+  "phone_number": "2233445566",
+  "college": "Princeton University",
+  "state": "New Jersey",
+  "city": "Ahmedabad",
+  "social_media_links": {
+    "github": "https://twitter.com/elijahadams",
+    "linkedin": "https://linkedin.com/in/elijahadams"
+  },
+  "skills": {
+    "DevOps": "Intermediate",
+    "Linux": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Automated Deployment",
+      "project_lead_name": "Elijah Adams",
+      "description": "Creating an automated deployment pipeline",
+      "city": "Ahmedabad",
+      "skills": [
+        "Linux",
+        "Docker"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac22f"
+  },
+  "name": "Lily Perez",
+  "email": "lilyperez@example.com",
+  "password": null,
+  "phone_number": "3344556677",
+  "college": "California Institute of Technology",
+  "state": "California",
+  "city": "Kolkata",
+  "social_media_links": {
+    "github": "https://twitter.com/lilyperez",
+    "linkedin": "https://linkedin.com/in/lilyperez"
+  },
+  "skills": {
+    "Frontend Development": "Intermediate",
+    "JavaScript": "Advanced",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Website Optimization",
+      "project_lead_name": "Lily Perez",
+      "description": "Optimizing the performance of a website",
+      "city": "Kolkata",
+      "skills": [
+        "JavaScript",
+        "React"
+      ],
+      "status": "Completed",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac230"
+  },
+  "name": "Isaac Walker",
+  "email": "isaacwalker@example.com",
+  "password": null,
+  "phone_number": "4455667788",
+  "college": "Harvard University",
+  "state": "Massachusetts",
+  "city": "Pune",
+  "social_media_links": {
+    "github": "https://twitter.com/isaacwalker",
+    "linkedin": "https://linkedin.com/in/isaacwalker"
+  },
+  "skills": {
+    "Networking": "Advanced",
+    "Cloud Computing": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Cloud Network Security",
+      "project_lead_name": "Isaac Walker",
+      "description": "Securing cloud infrastructure",
+      "city": "Pune",
+      "skills": [
+        "AWS",
+        "Network Security"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "675ea0e2b01904f27f0ac231"
+  },
+  "name": "Victoria Martin",
+  "email": "victoriamartin@example.com",
+  "password": null,
+  "phone_number": "5566778899",
+  "college": "University of Texas",
+  "state": "Texas",
+  "city": "Bengaluru",
+  "social_media_links": {
+    "github": "https://twitter.com/victoriamartin",
+    "linkedin": "https://linkedin.com/in/victoriamartin"
+  },
+  "skills": {
+    "Artificial Intelligence": "Advanced",
+    "Python": "Intermediate",
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "AI for Agriculture",
+      "project_lead_name": "Victoria Martin",
+      "description": "Developing AI models to predict crop yields",
+      "city": "Bengaluru",
+      "skills": [
+        "Python",
+        "AI"
+      ],
+      "status": "Ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "6760175af5fa5ba594575a80"
+  },
+  "name": "Beast boy",
+  "email": "b932944@gmail.com",
+  "password": null,
+  "phone_number": "",
+  "college": "",
+  "state": "",
+  "city": "",
+  "social_media_links": {
+    "github": "",
+    "linkedin": ""
+  },
+  "skills": {
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Traffic AI",
+      "project_lead_name": "Maham",
+      "description": "Hi I am Maham",
+      "skills": [
+        "Machine learning",
+        "python",
+        "tensorflow"
+      ],
+      "city": "Kolkata",
+      "status": "ongoing",
+      "members": [],
+      "github_link": "",
+      "project_index": 1
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "676020f0bfcfa09d15398d36"
+  },
+  "name": "Mahad Iqbal",
+  "email": "mahadiqbal70@gmail.com",
+  "password": "scrypt:32768:8:1$VXVG2LWrgVeG9496$ebc0aa8046442817f2840249225d291400ca56eb7cafb21f3a4a47f3071c0ce88dda17da924444d08dde8f47217cb364dcc484e0fe6aa16c602beaa91f64ea60",
+  "phone_number": "",
+  "college": "Heritage Institute Of technology",
+  "state": "West Bengal",
+  "city": "Kolkata",
+  "social_media_links": {
+    "github": "https://github.com/mahad2810",
+    "linkedin": "https://www.linkedin.com/in/mahadiqbal16/"
+  },
+  "skills": {
+    "Web Development": "ongoing",
+    "Python Programming": "completed",
+    "Machine Learning": "ongoing",
+    "Data Science": "completed"
+  },
+  "projects": [
+    {
+      "project_name": "Blockchain in healthcare",
+      "project_lead_name": "Mahad",
+      "description": "Hi I am Mahad",
+      "skills": [
+        "Python",
+        "Machine learning",
+        "MAtlab",
+        "sklearn"
+      ],
+      "city": "Kolkata",
+      "status": "ongoing",
+      "members": [
+        "maithili.kumar.bt27@heritageit.edu.in"
+      ],
+      "github_link": "",
+      "project_index": 1
+    },
+    {
+      "project_index": 2,
+      "project_name": "Blockchain in healthcare 2",
+      "project_lead_name": "Mahad Iqbal",
+      "description": "Hi",
+      "skills": [
+        "Python",
+        "Machine learning",
+        "MAtlab",
+        "sklearn"
+      ],
+      "city": "Balia",
+      "github_link": "https://github.com/itsPJ0204/CodeCrusaders/",
+      "status": "ongoing",
+      "members": [
+        "mahad.iqbal.aiml27@heritageit.edu.in"
+      ]
+    }
+  ]
+}]

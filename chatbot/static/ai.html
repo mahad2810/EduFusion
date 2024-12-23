@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Plan Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #output {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Study Plan Generator</h1>
+    <form id="studyPlanForm">
+        <label for="course_name">Course Name:</label>
+        <input type="text" id="course_name" placeholder="e.g., Machine Learning" required>
+
+        <label for="num_days">Number of Days:</label>
+        <input type="number" id="num_days" placeholder="e.g., 25" required>
+
+        <label for="hours_per_day">Hours Per Day:</label>
+        <input type="number" id="hours_per_day" placeholder="e.g., 4" required>
+
+        <button type="submit">Generate Study Plan</button>
+    </form>
+
+    <div id="output">Your study plan will appear here...</div>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

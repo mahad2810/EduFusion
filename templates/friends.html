@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #8a3cb8, #6b479c, #336fa5);
+            color: #ffffff;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .tab-button {
+            flex: 1;
+            padding: 15px;
+            background-color: #6b479c;
+            color: #ffffff;
+            border: none;
+            text-align: center;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .tab-button:hover {
+            background-color: #5a3a85;
+            transform: scale(1.05);
+        }
+        .tab-button.active {
+            background-color: #8a3cb8;
+        }
+        .tab-content {
+            display: none;
+            background: #1d1e2c;
+            border: 2px solid #8a3cb8;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #8a3cb8;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            color: #000000;
+            font-size: 1em;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #6b479c;
+            color: #ffffff;
+            border: 2px solid #8a3cb8;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #5a3a85;
+            transform: translateY(-3px);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #8a3cb8;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: #d1d1e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: #ffffff;
+        }
+        .friends-container {
+            display: flex;
+            gap: 20px;
+        }
+    
+        .friends-list {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid #8a3cb8;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            max-height: 500px;
+        }
+    
+        .dynamic-section {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    
+        .chatbot-section, .todo-section {
+            background: #1d1e2c;
+            border: 2px solid #8a3cb8;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+    
+        .chatbot-section h3, .todo-section h3 {
+            margin-top: 0;
+            color: #ffffff;
+        }
+    
+        .chatbot-container {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid #8a3cb8;
+            border-radius: 10px;
+            padding: 10px;
+            color: #d1d1e0;
+        }
+    
+        #todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+    
+        #todo-list li {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #8a3cb8;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            color: #d1d1e0;
+        }
+    
+        #todo-input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .friend-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+    
+        .friend-link:hover {
+            color: #8a3cb8;
+            text-decoration: underline;
+        }
+        
+    </style>
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const skillsForm = document.getElementById('skills-form');
+            const skillInput = document.getElementById('skill');
+            const skillsList = document.getElementById('skills-list');
+            const suggestedUsers = document.getElementById('suggested-users');
+
+            let userSkills = {}; // Store user skills
+
+            document.getElementById('add-skill-button').addEventListener('click', async () => {
+                const skill = skillInput.value.trim();
+                if (!skill) {
+                    alert('Please enter a valid skill.');
+                    return;
+                }
+
+                if (!userSkills[skill]) {
+                    try {
+                        // Send skill to the backend
+                        const response = await fetch('/add_skill', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                skill: skill
+                            })
+                        });
+
+                        const data = await response.json();
+                        if (response.ok) {
+                            userSkills[skill] = 'ongoing';
+                            updateSkillsList();
+                            updateSuggestedUsers();
+                        } else {
+                            alert(data.error || 'Failed to add skill.');
+                        }
+                    } catch (error) {
+                        alert('An error occurred while adding the skill.');
+                    }
+                } else {
+                    alert('Skill already added.');
+                }
+
+                skillInput.value = '';
+            });
+
+            function updateSkillsList() {
+                skillsList.innerHTML = '';
+                Object.keys(userSkills).forEach(skill => {
+                    const li = document.createElement('li');
+                    li.textContent = `${skill} (Ongoing)`;
+                    skillsList.appendChild(li);
+                });
+
+                if (Object.keys(userSkills).length === 0) {
+                    skillsList.innerHTML = '<li>No skills added yet.</li>';
+                }
+            }
+
+            async function updateSuggestedUsers() {
+                try {
+                    const response = await fetch('/suggest_users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({})
+                    });
+
+                    const data = await response.json();
+                    suggestedUsers.innerHTML = '';
+
+                    if (response.ok && data.length > 0) {
+                        data.forEach(user => {
+                            const li = document.createElement('li');
+                            li.textContent = user.name;
+
+                            const sendRequestButton = document.createElement('button');
+                            sendRequestButton.textContent = 'Send Request';
+                            sendRequestButton.addEventListener('click', async () => {
+                                try {
+                                    const response = await fetch('/send-request', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            email: user.email
+                                        })
+                                    });
+
+                                    const result = await response.json();
+                                    if (response.ok) {
+                                        alert(`Friend request sent to ${user.name}`);
+                                    } else {
+                                        alert(result.error || 'Failed to send request.');
+                                    }
+                                } catch (error) {
+                                    alert('An error occurred while sending the friend request.');
+                                }
+                            });
+
+                            li.appendChild(sendRequestButton);
+                            suggestedUsers.appendChild(li);
+                        });
+                    } else {
+                        suggestedUsers.innerHTML = '<li>No suggestions yet. Add skills to find users with similar interests.</li>';
+                    }
+                } catch (error) {
+                    alert('An error occurred while fetching suggestions.');
+                }
+            }
+
+            // Initial UI updates
+            updateSkillsList();
+            suggestedUsers.innerHTML = '<li>No suggestions yet. Add skills to find users with similar interests.</li>';
+        });
+
+        // Fetch and display friend requests
+        async function fetchRequests() {
+            const response = await fetch('/fetch-requests');
+            const data = await response.json();
+            const requestsList = document.getElementById('requests-list');
+            requestsList.innerHTML = '';
+
+            if (data.requests.length === 0) {
+                requestsList.innerHTML = '<li>No friend requests yet.</li>';
+                return;
+            }
+
+            data.requests.forEach(email => {
+                const li = document.createElement('li');
+                li.textContent = email;
+
+                const acceptButton = document.createElement('button');
+                acceptButton.textContent = 'Accept';
+                acceptButton.onclick = () => acceptRequest(email);
+
+                li.appendChild(acceptButton);
+                requestsList.appendChild(li);
+            });
+        }
+
+        // Accept a friend request
+        async function acceptRequest(email) {
+            const response = await fetch('/accept-request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }),
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                alert('Friend request accepted!');
+                fetchRequests(); // Refresh the requests list
+            } else {
+                alert('Failed to accept friend request.');
+            }
+        }
+
+        // Call fetchRequests on page load
+        document.addEventListener('DOMContentLoaded', fetchRequests);
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab-button active" onclick="switchTab('friends')">Friends</div>
+            <div class="tab-button" onclick="switchTab('add-skills')">Add New Friends</div>
+            <div class="tab-button" onclick="switchTab('requests')">Requests</div>
+        </div>
+
+        <div id="friends" class="tab-content active">
+            <h2>Your Friends</h2>
+            <div class="friends-container">
+                <!-- Left Section: Friends List -->
+                <div class="friends-list">
+                    <ul id="friends-list">
+                        {% if friends %}
+                            {% for friend in friends %}
+                                <li><a href="/friend/{{ friend.email }}" class="friend-link">{{ friend.name }}</a></li>
+                            {% endfor %}
+                        {% else %}
+                            <li>No friends yet. Start adding some!</li>
+                        {% endif %}
+                    </ul>
+                </div>
+        
+                <!-- Right Section: Dynamic Content -->
+                <div class="dynamic-section">
+                    <!-- Chatbot Section -->
+                    <div class="chatbot-section">
+                        <h3>Chatbot</h3>
+                        <div class="chatbot-container">
+                            <p>Chat with your friends here!</p>
+                        </div>
+                    </div>
+        
+                    <!-- To-Do List Section -->
+                    <div class="todo-section">
+                        <h3>To-Do List</h3>
+                        <ul id="todo-list">
+                            <li>Example task for your friend!</li>
+                        </ul>
+                        <input type="text" id="todo-input" placeholder="Add a new task...">
+                        <button>Add Task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="add-skills" class="tab-content">
+            <h2>Add Skills You Want to Learn</h2>
+            <form id="skills-form">
+                <label for="skill">Add a Skill:</label>
+                <input type="text" id="skill" name="skill" placeholder="Enter a skill">
+                <button type="button" id="add-skill-button">Add Skill</button>
+            </form>
+            <ul id="skills-list">
+                <li>No skills added yet.</li>
+            </ul>
+            <h2>Suggested Users</h2>
+            <ul id="suggested-users">
+                <li>No suggestions yet. Add skills to find users with similar interests.</li>
+            </ul>
+        </div>
+
+        <div id="requests" class="tab-content">
+            <h2>Friend Requests</h2>
+            <ul id="requests-list">
+                <li>No friend requests yet.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

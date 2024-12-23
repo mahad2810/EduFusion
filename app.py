@@ -16,10 +16,16 @@ import random
 from werkzeug.security import generate_password_hash
 from bson import ObjectId
 from bson.objectid import ObjectId
+from pymongo import MongoClient
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+
+
+
 
 app = Flask(__name__)
 # MongoDB configuration
-app.config["MONGO_URI"] = "mongodb+srv://thesevasetufoundation:QDBxMA83Wsiamvyb@sevasetu.qplys.mongodb.net/Khack?retryWrites=true&w=majority&tls=true"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/Khack"
 app.secret_key = "supersecretkey"
 mongo = PyMongo(app)
 
@@ -556,6 +562,155 @@ def send_email():
 
     except Exception as e:
         return jsonify({"status": "error", "message": f"Failed to send email: {str(e)}"}), 500
+
+
+users_collection = mongo.db.users
+
+@app.route('/add_skill', methods=['POST'])
+def add_skill():
+    if 'user_email' not in session:
+        return jsonify({"error": "User not logged in."}), 401
+
+    user_email = session['user_email']
+    skill = request.json.get('skill')
+
+    if not skill:
+        return jsonify({"error": "Skill is required."}), 400
+
+    users_collection.update_one(
+        {"email": user_email},
+        {"$set": {f"skills.{skill}": "ongoing"}},
+        upsert=True
+    )
+
+    return jsonify({"message": "Skill added successfully."}), 200
+
+@app.route('/suggest_users', methods=['POST'])
+def suggest_users():
+    if 'user_email' not in session:
+        return jsonify({"error": "User not logged in."}), 401
+
+    user_email = session['user_email']
+    user = users_collection.find_one({"email": user_email})
+
+    if not user or "skills" not in user:
+        return jsonify([])
+
+    user_skills = user["skills"]
+    matching_users = users_collection.find({
+        "email": {"$ne": user_email},
+        "$or": [{f"skills.{skill}": "ongoing"} for skill in user_skills]
+    })
+
+    suggested_users = [
+        {"_id": str(user["_id"]), "name": user.get("name", "Unknown"), "email": user.get("email", "")}
+        for user in matching_users
+    ]
+
+    return jsonify(suggested_users), 200
+
+@app.route('/friends', methods=['GET'])
+def friends_page():
+    if 'user_email' not in session:
+        return redirect(url_for('login'))
+
+    user = users_collection.find_one({"email": session['user_email']})
+    if not user:
+        return render_template('friends.html', friends=[], suggestions=[])
+
+    # Retrieve friends array
+    friends_emails = user.get("friends", [])
+    friends_data = [
+        {"name": friend.get("name", "Unknown"), "email": friend.get("email", "")}
+        for friend in users_collection.find({"email": {"$in": friends_emails}})
+    ]
+
+    # Retrieve suggestions
+    user_skills = user.get("skills", {})
+    matching_users = users_collection.find({
+        "email": {"$ne": session['user_email']},
+        "$or": [{f"skills.{skill}": "ongoing"} for skill in user_skills]
+    })
+
+    suggestions = [
+        {"name": user.get("name", "Unknown"), "email": user.get("email", "")}
+        for user in matching_users
+    ]
+
+    return render_template('friends.html', friends=friends_data, suggestions=suggestions)
+
+
+
+@app.route('/send-request', methods=['POST'])
+def send_request():
+    if 'user_email' not in session:
+        return jsonify({"error": "User not logged in"}), 401
+
+    data = request.json
+    friend_email = data.get('email')
+    user_email = session['user_email']
+
+    if not friend_email:
+        return jsonify({"error": "Friend email not provided"}), 400
+
+    # Check if the recipient exists
+    recipient = users_collection.find_one({"email": friend_email})
+    if not recipient:
+        return jsonify({"error": "Recipient not found"}), 404
+
+    # Logic to send a friend request
+    result = users_collection.update_one(
+        {"email": friend_email},
+        {"$push": {"requests": user_email}}
+    )
+
+    if result.modified_count == 0:
+        return jsonify({"error": "Failed to update requests"}), 500
+
+    return jsonify({"success": True})
+
+
+
+
+@app.route('/fetch-requests', methods=['GET'])
+def fetch_requests():
+    if 'user_email' not in session:
+        return jsonify({"error": "User not logged in"}), 401
+
+    user_email = session['user_email']
+    user = users_collection.find_one({"email": user_email}, {"_id": 0, "requests": 1})
+    requests = user.get("requests", [])
+    return jsonify({"requests": requests})
+
+
+@app.route('/accept-request', methods=['POST'])
+def accept_request():
+    if 'user_email' not in session:
+        return jsonify({"error": "User not logged in"}), 401
+
+    data = request.json
+    requester_email = data.get('email')
+    user_email = session['user_email']
+
+    if not requester_email:
+        return jsonify({"error": "Requester email not provided"}), 400
+
+    # Update both users' friends arrays
+    users_collection.update_one(
+        {"email": user_email},
+        {
+            "$pull": {"requests": requester_email},
+            "$push": {"friends": requester_email}
+        }
+    )
+    users_collection.update_one(
+        {"email": requester_email},
+        {"$push": {"friends": user_email}}
+    )
+
+    return jsonify({"success": True})
+
+
 
 
 @app.route('/logout', methods=['POST'])

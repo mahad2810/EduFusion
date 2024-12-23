@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+      background: linear-gradient(to bottom right, #536878, #EAE0C8);
       height: 100vh;
       overflow: hidden;
     }
@@ -26,21 +26,19 @@
       z-index: 100;
     }
     
-    /* Logo image holder */
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent; /* Make the logo holder transparent */
-}
-
-/* Logo image styles */
-.logo-image {
-    width: 30px;  /* Set a standard width */
-    height: auto;  /* Automatically adjust the height to maintain aspect ratio */
-    border: none;  /* Remove any border around the image */
-}
-
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+    }
+    
+    .logo-image {
+      width: 30px;
+      height: auto;
+      border: none;
+    }
+    
     .main-container {
       display: flex;
       align-items: center;
@@ -54,34 +52,34 @@
       flex: 1;
       max-width: 50%;
       text-align: left;
-      color: white;
+      color: #EAE0C8;
       z-index: 10;
     }
     
     .content .small-text {
       font-size: 1.5rem;
       font-weight: 400;
-      margin-bottom: 7px; /* Reduced gap */
-      margin-left: 25px; /* Moved to the right */
+      margin-bottom: 7px;
+      margin-left: 25px;
     }
-  
+    
     .content .large-text {
       font-size: 4rem;
       font-weight: 800;
-      margin-bottom: 8px; /* Reduced gap */
-      color: black; /* Changed color */
+      margin-bottom: 8px;
+      color: #536878;
     }
-  
+    
     .content p {
       font-size: 1.25rem;
-      margin-bottom: 24px; /* Reduced gap */
+      margin-bottom: 24px;
       max-width: 600px;
     }
     
     .start-button {
       padding: 12px 24px;
-      background-color: #333333;
-      color: white;
+      background-color: #536878;
+      color: #EAE0C8;
       font-weight: bold;
       border-radius: 8px;
       border: none;
@@ -92,7 +90,7 @@
     }
     
     .start-button:hover {
-      background-color: #555555;
+      background-color: #3B4A5A;
     }
     
     .image-holder {
@@ -103,92 +101,91 @@
       align-items: center;
       overflow: visible;
     }
-
+    
     .image-holder img {
       position: absolute;
       border-radius: 0;
       box-shadow: none;
       overflow: visible;
     }
-
+    
     .image-holder .image1 {
-      max-width: 750px; /* Further increase size */
-      top: -550px; /* Move it up slightly */
-      z-index: 1; /* Below image2 but above orbs */
-    }
-
-    .image-holder .image2 {
-      max-width: 350px; /* Ensure it overlaps nicely */
-      z-index: 2; /* On top of image1 */
+      max-width: 750px;
+      top: -550px;
+      z-index: 1;
     }
     
-    /* Floating Orbs */
+    .image-holder .image2 {
+      max-width: 350px;
+      z-index: 2;
+    }
+    
     .orb {
       position: absolute;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
-      z-index: 0; /* Below all images */
+      z-index: 0;
     }
     
-    /* Orb Animations */
-  .orb1 {
-    width: 100px; 
-    height: 100px; 
-    top: 20%; 
-    left: 5%; /* Positioned to the left */
-    animation: orb1 4s ease-in-out infinite;
-  }
-  
-  .orb2 {
-    width: 150px; 
-    height: 150px; 
-    top: 50%; 
-    left: 90%; /* Positioned to the right */
-    animation: orb2 5s ease-in-out infinite;
-  }
-
-  .orb3 {
-    width: 120px; 
-    height: 120px; 
-    top: 80%; 
-    left: 10%; /* Bottom-left side */
-    animation: orb3 3.5s ease-in-out infinite;
-  }
-  
-  .orb4 {
-    width: 80px; 
-    height: 80px; 
-    top: 10%; 
-    left: 85%; /* Top-right side */
-    animation: orb4 6s ease-in-out infinite;
-  }
-  
-  /* Keyframes for Orb Animations */
-  @keyframes orb1 {
-    0% { transform: translateY(0px) translateX(0px); }
-    50% { transform: translateY(-15px) translateX(10px); }
-    100% { transform: translateY(0px) translateX(0px); }
-  }
-
-  @keyframes orb2 {
-    0% { transform: translateY(0px) translateX(0px); }
-    50% { transform: translateY(10px) translateX(-20px); }
-    100% { transform: translateY(0px) translateX(0px); }
-  }
-
-  @keyframes orb3 {
-    0% { transform: translateY(0px) translateX(0px); }
-    50% { transform: translateY(20px) translateX(15px); }
-    100% { transform: translateY(0px) translateX(0px); }
-  }
-
-  @keyframes orb4 {
-    0% { transform: translateY(0px) translateX(0px); }
-    50% { transform: translateY(-25px) translateX(-10px); }
-    100% { transform: translateY(0px) translateX(0px); }
-  }
+    .orb1 {
+      width: 100px; 
+      height: 100px; 
+      top: 20%; 
+      left: 5%;
+      animation: orb1 4s ease-in-out infinite;
+    }
+    
+    .orb2 {
+      width: 150px; 
+      height: 150px; 
+      top: 50%; 
+      left: 90%;
+      animation: orb2 5s ease-in-out infinite;
+    }
+    
+    .orb3 {
+      width: 120px; 
+      height: 120px; 
+      top: 80%; 
+      left: 10%;
+      animation: orb3 3.5s ease-in-out infinite;
+    }
+    
+    .orb4 {
+      width: 80px; 
+      height: 80px; 
+      top: 10%; 
+      left: 85%;
+      animation: orb4 6s ease-in-out infinite;
+    }
+    
+    @keyframes orb1 {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-15px) translateX(10px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+    
+    @keyframes orb2 {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(10px) translateX(-20px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+    
+    @keyframes orb3 {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(20px) translateX(15px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+    
+    @keyframes orb4 {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-25px) translateX(-10px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+    
   </style>
+  
 </head>
 <body>
 

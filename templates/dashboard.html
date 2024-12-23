@@ -9,7 +9,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Arial', sans-serif;
-        background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+        background: linear-gradient(to bottom right, #536878, #7a8c9c, #EAE0C8);
         height: 100vh;
         overflow: hidden;
     }
@@ -27,15 +27,15 @@
     }
 
     .navbar .logo {
-        color: white;
+        color: #EAE0C8;
         font-size: 1.5rem;
         font-weight: bold;
     }
 
     .navbar .logout-button {
-        background-color: #6b479c;
-        color: #ffffff;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
@@ -43,7 +43,7 @@
     }
 
     .navbar .logout-button:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 
     .dashboard {
@@ -59,8 +59,8 @@
         backdrop-filter: blur(10px);
         padding: 20px;
         border-radius: 10px;
-        border: 1px solid #8a3cb8;
-        color: white;
+        border: 1px solid #7a8c9c;
+        color: #EAE0C8;
         margin-bottom: 20px;
         display: flex;
         flex-direction: column;
@@ -79,7 +79,7 @@
 
     .details .field label {
         width: 30%;
-        color: #d1d1e0;
+        color: #EAE0C8;
     }
 
     .details .field span,
@@ -90,8 +90,8 @@
     .details input {
         padding: 8px;
         border-radius: 4px;
-        border: 1px solid #8a3cb8;
-        background-color: #f9f9f9;
+        border: 1px solid #7a8c9c;
+        background-color: #EAE0C8;
         color: #000000;
         display: none;
     }
@@ -101,9 +101,9 @@
     }
 
     .details .edit-buttons button {
-        background-color: #6b479c;
-        color: #ffffff;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
@@ -112,7 +112,7 @@
     }
 
     .details .edit-buttons button:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 
     .bottom-section {
@@ -120,8 +120,8 @@
         backdrop-filter: blur(10px);
         padding: 20px;
         border-radius: 10px;
-        border: 1px solid #8a3cb8;
-        color: white;
+        border: 1px solid #7a8c9c;
+        color: #EAE0C8;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -137,25 +137,24 @@
     .tabs button {
         padding: 10px;
         background-color: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: 1px solid #8a3cb8;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         border-radius: 8px;
         cursor: pointer;
         transition: background-color 0.3s;
     }
 
     .tabs button.active, .tabs button:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 
     .table-container {
-      display: block; /* Ensure the container is visible */
-      overflow-x: auto; /* Allow horizontal scrolling if the table is wider than the container */
-      overflow-y: auto; /* Optional: Allow vertical scrolling */
-      max-height: 100%; /* Limit the height to avoid clipping */
-      padding: 10px; /* Add padding for better spacing */
-  }
-  
+        display: block;
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 100%;
+        padding: 10px;
+    }
 
     .table-container.active {
         display: block;
@@ -164,7 +163,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
-        color: black;
+        color: #000000;
     }
 
     table th, table td {
@@ -173,7 +172,6 @@
         text-align: left;
     }
 
-    /* Modal styles */
     .modal {
         position: fixed;
         top: 0;
@@ -196,14 +194,14 @@
     }
 
     .modal-content {
-        background-color: #1d1e2c;
+        background-color: #536878;
         padding: 20px;
         border-radius: 10px;
-        border: 1px solid #8a3cb8;
+        border: 1px solid #7a8c9c;
         text-align: center;
         width: 90%;
         max-width: 400px;
-        color: #ffffff;
+        color: #EAE0C8;
     }
 
     .modal-header {
@@ -213,9 +211,9 @@
 
     .modal-footer button {
         margin-top: 10px;
-        background-color: #6b479c;
-        color: #ffffff;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         padding: 10px 20px;
         border-radius: 8px;
         cursor: pointer;
@@ -223,33 +221,33 @@
     }
 
     .modal-footer button:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 
     .field {
         margin: 20px;
         font-size: 1rem;
-        color: #ffffff;
+        color: #EAE0C8;
     }
 
     label {
         display: block;
         margin-bottom: 5px;
-        color: #d1d1e0;
+        color: #EAE0C8;
     }
 
     #edit-college {
         margin-top: 10px;
         padding: 8px 12px;
-        background-color: #6b479c;
-        color: #ffffff;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         border-radius: 8px;
         cursor: pointer;
     }
 
     #edit-college:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 
     #college-dropdown {
@@ -257,9 +255,9 @@
         margin-top: 10px;
         width: 100%;
         padding: 8px 12px;
-        background-color: #f9f9f9;
+        background-color: #EAE0C8;
         color: #000000;
-        border: 1px solid #8a3cb8;
+        border: 1px solid #7a8c9c;
         border-radius: 8px;
         font-size: 1rem;
     }
@@ -269,24 +267,24 @@
     }
 
     th {
-        background-color: #6b479c;
-        color: #ffffff;
+        background-color: #536878;
+        color: #EAE0C8;
     }
 
     .members-list {
         margin-top: 10px;
         padding: 10px;
-        background-color: #f9f9f9;
-        border: 1px solid #8a3cb8;
+        background-color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         border-radius: 8px;
         color: #000000;
     }
 
     button {
         padding: 5px 10px;
-        background-color: #6b479c;
-        color: #ffffff;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        color: #EAE0C8;
+        border: 1px solid #7a8c9c;
         cursor: pointer;
         font-size: 14px;
         border-radius: 8px;
@@ -294,10 +292,9 @@
     }
 
     button:hover {
-        background-color: #5a3a85;
+        background-color: #435264;
     }
 </style>
-
 
 
 </head>

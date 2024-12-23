@@ -5,264 +5,264 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
   <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom right, #8a3cb8, #6b479c, #336fa5);
-    height: 100vh;
-    overflow: hidden;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom right, #536878, #4a5e6c, #3e5264);
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 32px;
+      z-index: 100;
+    }
+    
+    /* Logo image holder */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent; /* Make the logo holder transparent */
+    }
   
-  .navbar {
-    position: sticky;
-    top: 0;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 32px;
-    z-index: 100;
-  }
+    /* Logo image styles */
+    .logo-image {
+      width: 30px;  /* Set a standard width */
+      height: auto;  /* Automatically adjust the height to maintain aspect ratio */
+      border: none;  /* Remove any border around the image */
+    }
+    
+    .navbar .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    
+    .navbar .nav-links a {
+      color: #EAE0C8;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    
+    .navbar .nav-links a:hover {
+      color: #536878;
+    }
+    
+    .home-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 64px);
+      text-align: center;
+      color: #EAE0C8;
+    }
+    
+    .home-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+    
+    .options {
+      display: flex;
+      gap: 32px;
+    }
+    
+    .option {
+      background-color: rgba(255, 255, 255, 0.15);
+      border: 2px solid #EAE0C8;
+      backdrop-filter: blur(10px);
+      padding: 24px 32px;
+      border-radius: 12px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #EAE0C8;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .option:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+    
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.3s, opacity 0.3s;
+      z-index: 100; /* Ensures modal is above all other elements */
+    }
+    
+    .modal.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    .modal-content {
+      position: relative; /* Allows positioning of close button inside modal */
+      background-color: #3e5264;
+      border: 3px solid #EAE0C8;
+      border-radius: 16px;
+      padding: 20px;
+      width: 90%; /* Adjusted to fit on smaller screens */
+      max-width: 500px;
+      text-align: center;
+      z-index: 101; /* Modal content remains above everything */
+      color: #EAE0C8;
+    }
+    
+    .modal-content h2 {
+      margin-bottom: 20px;
+    }
+    
+    .modal-content button {
+      background-color: #536878;
+      border: 2px solid #EAE0C8;
+      color: #EAE0C8;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .modal-content button:hover {
+      background-color: #4a5e6c;
+      transform: scale(1.05);
+    }
+    
+    /* Close button styles */
+    .modal-content .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #EAE0C8;
+    }
+    
+    /* Form container adjustments */
+    .form-container {
+      max-height: 400px; /* Set a fixed height to enable scrolling */
+      overflow-y: auto; /* Allow vertical scrolling */
+      margin-top: 20px;
+      padding-right: 10px; /* Optional: Adds padding for better UX */
+    }
+    
+    .form-container::-webkit-scrollbar {
+      width: 8px; /* Adjust the scrollbar width */
+    }
+    
+    .form-container::-webkit-scrollbar-thumb {
+      background-color: #536878; /* Scrollbar color */
+      border-radius: 4px; /* Rounded scrollbar edges */
+    }
+    
+    .form-container::-webkit-scrollbar-thumb:hover {
+      background-color: #4a5e6c; /* Scrollbar hover color */
+    }
+    
+    .form-container label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #EAE0C8; /* Light gray text for labels */
+    }
+    
+    .form-container input,
+    .form-container textarea {
+      width: 90%;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #536878;
+      color: black; /* Ensures input text is black */
+      background-color: #EAE0C8;
+    }
+    
+    .form-container button {
+      margin-top: 20px;
+      width: 100%;
+    }
+    
+    .orb1, .orb2, .orb3, .orb4, .orb5, .orb6, .orb7, .orb8 {
+      position: absolute;
+      z-index: 1; /* Ensure orbs are below all other elements */
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    
+    .orb1 { animation: orb1 3s ease-in-out infinite; }
+    .orb2 { animation: orb2 4s ease-in-out infinite; }
+    .orb3 { animation: orb3 3.5s ease-in-out infinite; }
+    .orb4 { animation: orb4 5s ease-in-out infinite; }
+    .orb5 { animation: orb1 4.5s ease-in-out infinite; }
+    .orb6 { animation: orb2 3.5s ease-in-out infinite; }
+    .orb7 { animation: orb3 5s ease-in-out infinite; }
+    .orb8 { animation: orb4 4s ease-in-out infinite; }
+    
+    @keyframes orb1 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    
+    @keyframes orb2 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-20px) translateX(-10px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    
+    @keyframes orb3 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(10px) translateX(15px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    
+    @keyframes orb4 {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-25px) translateX(5px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+    
+    .redirect-button {
+      padding: 10px 20px;
+      background-color: #536878;
+      color: #EAE0C8;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
   
-  /* Logo image holder */
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent; /* Make the logo holder transparent */
-}
-
-/* Logo image styles */
-.logo-image {
-    width: 30px;  /* Set a standard width */
-    height: auto;  /* Automatically adjust the height to maintain aspect ratio */
-    border: none;  /* Remove any border around the image */
-}
+    .redirect-button:hover {
+      background-color: #4a5e6c;
+      transform: scale(1.05);
+    }
+  </style>
   
-  .navbar .nav-links {
-    display: flex;
-    gap: 24px;
-  }
-  
-  .navbar .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s;
-  }
-  
-  .navbar .nav-links a:hover {
-    color: #8a3cb8;
-  }
-  
-  .home-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: calc(100vh - 64px);
-    text-align: center;
-    color: white;
-  }
-  
-  .home-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 24px;
-  }
-  
-  .options {
-    display: flex;
-    gap: 32px;
-  }
-  
-  .option {
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid #8a3cb8;
-    backdrop-filter: blur(10px);
-    padding: 24px 32px;
-    border-radius: 12px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .option:hover {
-    background-color: rgba(255, 255, 255, 0.25);
-    transform: scale(1.05);
-  }
-  
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0.3s, opacity 0.3s;
-    z-index: 100; /* Ensures modal is above all other elements */
-  }
-  
-  .modal.show {
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .modal-content {
-    position: relative; /* Allows positioning of close button inside modal */
-    background-color: #1d1e2c;
-    border: 3px solid #8a3cb8;
-    border-radius: 16px;
-    padding: 20px;
-    width: 90%; /* Adjusted to fit on smaller screens */
-    max-width: 500px;
-    text-align: center;
-    z-index: 101; /* Modal content remains above everything */
-    color: white;
-  }
-  
-  .modal-content h2 {
-    margin-bottom: 20px;
-  }
-  
-  .modal-content button {
-    background-color: #6b479c;
-    border: 2px solid #8a3cb8;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  
-  .modal-content button:hover {
-    background-color: #5a3a85;
-    transform: scale(1.05);
-  }
-  
-  /* Close button styles */
-  .modal-content .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  /* Form container adjustments */
-  .form-container {
-    max-height: 400px; /* Set a fixed height to enable scrolling */
-    overflow-y: auto; /* Allow vertical scrolling */
-    margin-top: 20px;
-    padding-right: 10px; /* Optional: Adds padding for better UX */
-  }
-  
-  .form-container::-webkit-scrollbar {
-    width: 8px; /* Adjust the scrollbar width */
-  }
-  
-  .form-container::-webkit-scrollbar-thumb {
-    background-color: #8a3cb8; /* Scrollbar color */
-    border-radius: 4px; /* Rounded scrollbar edges */
-  }
-  
-  .form-container::-webkit-scrollbar-thumb:hover {
-    background-color: #6b479c; /* Scrollbar hover color */
-  }
-  
-  
-  .form-container label {
-    display: block;
-    margin: 10px 0 5px;
-    color: #d1d1e0; /* Light gray text for labels */
-  }
-  
-  .form-container input,
-  .form-container textarea {
-    width: 90%;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom:10px;
-    border: 1px solid #8a3cb8;
-    color: black; /* Ensures input text is black */
-    background-color: #f9f9f9;
-  }
-  
-  .form-container button {
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .orb1, .orb2, .orb3, .orb4, .orb5, .orb6, .orb7, .orb8 {
-    position: absolute;
-    z-index: 1; /* Ensure orbs are below all other elements */
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-  }
-  
-  .orb1 { animation: orb1 3s ease-in-out infinite; }
-  .orb2 { animation: orb2 4s ease-in-out infinite; }
-  .orb3 { animation: orb3 3.5s ease-in-out infinite; }
-  .orb4 { animation: orb4 5s ease-in-out infinite; }
-  .orb5 { animation: orb1 4.5s ease-in-out infinite; }
-  .orb6 { animation: orb2 3.5s ease-in-out infinite; }
-  .orb7 { animation: orb3 5s ease-in-out infinite; }
-  .orb8 { animation: orb4 4s ease-in-out infinite; }
-  
-  @keyframes orb1 {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(10px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-  
-  @keyframes orb2 {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-20px) translateX(-10px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-  
-  @keyframes orb3 {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(10px) translateX(15px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-  
-  @keyframes orb4 {
-    0% { transform: translateY(0) translateX(0); }
-    50% { transform: translateY(-25px) translateX(5px); }
-    100% { transform: translateY(0) translateX(0); }
-  }
-  .redirect-button {
-    padding: 10px 20px;
-    background-color: #6b479c;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.redirect-button:hover {
-    background-color: #8a3cb8;
-    transform: scale(1.05);
-}
-</style>  
-
 </head>
 <body>
 

@@ -11,10 +11,10 @@
       margin: 0;
       padding: 0;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(to bottom right, #9b4dca, #7c55b1, #387ed0);
+      background: linear-gradient(to bottom right, #536878, #6b778c, #EAE0C8);
       height: 100vh;
       overflow: hidden;
-      color: white;
+      color: #EAE0C8;
     }
   
     .container {
@@ -33,15 +33,15 @@
     table td {
       padding: 12px;
       text-align: left;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(234, 224, 200, 0.3);
     }
   
     table th {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(234, 224, 200, 0.1);
     }
   
     table tr:nth-child(even) {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(234, 224, 200, 0.1);
     }
   
     .filter-container {
@@ -53,31 +53,31 @@
     .filter-container select {
       padding: 10px;
       border-radius: 10px;
-      border: 1px solid #8a3cb8;
-      background-color: #6b479c;
-      color: #ffffff;
+      border: 1px solid #536878;
+      background-color: #6b778c;
+      color: #EAE0C8;
       cursor: pointer;
       transition: background-color 0.3s, border-color 0.3s;
     }
   
     .filter-container select:hover {
-      background-color: #5a3a85;
-      border-color: #7b3d92;
+      background-color: #5a6474;
+      border-color: #6a7b8e;
     }
   
     .button {
-      background-color: #6b479c;
-      color: #ffffff;
+      background-color: #6b778c;
+      color: #EAE0C8;
       padding: 10px 20px;
-      border: 1px solid #8a3cb8;
+      border: 1px solid #536878;
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.3s, border-color 0.3s;
     }
   
     .button:hover {
-      background-color: #5a3a85;
-      border-color: #7b3d92;
+      background-color: #5a6474;
+      border-color: #6a7b8e;
     }
   
     /* Modal Styles */
@@ -102,14 +102,14 @@
     }
     
     .modal-content {
-        background-color: #1d1e2c;
-        border: 1px solid #8a3cb8;
+        background-color: #536878;
+        border: 1px solid #EAE0C8;
         border-radius: 10px;
         padding: 20px;
         width: 400px;
         max-height: 80%;
         overflow-y: auto;
-        color: #ffffff;
+        color: #EAE0C8;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
         position: relative;
     }
@@ -120,28 +120,28 @@
         justify-content: space-between;
         align-items: center;
         margin-bottom: 20px;
-        margin-top: 10px; /* Add some space above */
+        margin-top: 10px;
     }
     
     .modal-header h2 {
         font-size: 1.5rem;
-        color: #8a3cb8;
-        border-bottom: 1px solid #8a3cb8;
+        color: #EAE0C8;
+        border-bottom: 1px solid #EAE0C8;
         padding-bottom: 10px;
-        margin: 0; /* Removes default margin */
-        margin-top: 10px; /* Add space above the heading */
+        margin: 0;
+        margin-top: 10px;
     }
     
     .social-links {
         display: flex;
         align-items: center;
-        margin-top: 10px; /* Move the icons slightly down */
+        margin-top: 10px;
     }
     
     
     .social-links a {
         margin-left: 10px;
-        color: #fff;
+        color: #EAE0C8;
         text-decoration: none;
     }
     
@@ -150,11 +150,7 @@
     }
     
     .social-links a:hover {
-        color: #0073b1; /* LinkedIn blue color when hovered */
-    }
-    
-    .social-links a:first-child:hover {
-        color: #333; /* GitHub color when hovered */
+        color: #EAE0C8; 
     }
     
     .close-btn {
@@ -162,7 +158,7 @@
         top: 10px;
         right: 10px;
         font-size: 1.5rem;
-        color: #d1d1e0;
+        color: #EAE0C8;
         cursor: pointer;
         z-index: 10;
     }
@@ -179,18 +175,18 @@
     }
     
     .modal-content ul li {
-        background: #2a2b3c;
+        background: #6b778c;
         margin: 5px 0;
         padding: 10px;
         border-radius: 5px;
-        color: #d1d1e0;
+        color: #EAE0C8;
     }
     
     .modal-content button {
-        background-color: #6b479c;
-        color: #ffffff;
+        background-color: #6b778c;
+        color: #EAE0C8;
         padding: 10px 15px;
-        border: 1px solid #8a3cb8;
+        border: 1px solid #536878;
         border-radius: 10px;
         cursor: pointer;
         margin-top: 10px;
@@ -198,8 +194,8 @@
     }
     
     .modal-content button:hover {
-        background-color: #5a3a85;
-        border-color: #7b3d92;
+        background-color: #5a6474;
+        border-color: #6a7b8e;
     }
     
     /* Skills List */
@@ -210,14 +206,14 @@
     }
     
     #skillsList li {
-        background: #2a2b3c;
+        background: #6b778c;
         margin: 5px 0;
         padding: 10px;
         border-radius: 5px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color: #d1d1e0;
+        color: #EAE0C8;
     }
     
     .skill-name {
@@ -231,16 +227,16 @@
     }
     
     .skill-status.ongoing {
-        background-color: #ff9800;
+        background-color: #8b9ab6;
     }
     
     .skill-status.completed {
-        background-color: #4caf50;
+        background-color: #536878;
     }
     
 
   </style>
-  
+
   
 </head>
 <body>

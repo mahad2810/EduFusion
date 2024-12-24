@@ -248,19 +248,19 @@
     
     .redirect-button {
       padding: 10px 20px;
-      background-color: #536878;
-      color: #EAE0C8;
-      border: none;
-      border-radius: 5px;
+      background-color: transparent; /* No background */
+      color: #EAE0C8; /* Text color */
+      border: none; /* No border */
       font-size: 1em;
       cursor: pointer;
       transition: all 0.3s ease;
-    }
+  }
   
-    .redirect-button:hover {
-      background-color: #4a5e6c;
-      transform: scale(1.05);
-    }
+  .redirect-button:hover {
+      color: #FFFFFF; /* Brighter text on hover for interactivity */
+  }
+  
+  
   </style>
   
 </head>
@@ -283,7 +283,8 @@
       <div class="option">
         <button onclick="location.href='/friends'" class="redirect-button">Find Companion for Learning</button>
     </div>
-    
+
+  
       <div class="option" id="findGroupProjectsBtn">Find Group Projects</div>
     </div>
     <div class="modal" id="modal" aria-hidden="true">

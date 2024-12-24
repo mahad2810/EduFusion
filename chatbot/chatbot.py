@@ -107,5 +107,4 @@ def generate_study_plan():
         return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    print("Flask server running at http://127.0.0.1:5000/")
-    app.run(debug=True)
+    app.run(debug=True, port=5001)

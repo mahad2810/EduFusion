@@ -1,46 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Plan Generator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        form {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin: 5px 0;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 15px;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #536878, #EAE0C8);
+            height: 100vh;
             box-sizing: border-box;
         }
+
+        h1 {
+            color: #EAE0C8; /* Pearl */
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        form {
+            background-color: rgba(83, 104, 120, 0.9); /* Payne Grey */
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 32px;
+            max-width: 360px;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            color: #EAE0C8; /* Pearl */
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: #536878; /* Payne Grey */
+            color: #EAE0C8; /* Pearl */
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
         button {
-            background-color: #007BFF;
-            color: white;
+            width: 100%;
+            padding: 12px;
+            background-color: #EAE0C8; /* Pearl */
+            color: #536878; /* Payne Grey */
+            font-weight: bold;
+            border-radius: 8px;
             border: none;
             cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #D6CDB8; /* Slightly darker Pearl */
         }
-        #output {
-            border: 1px solid #ddd;
-            padding: 15px;
-            background-color: #f9f9f9;
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scrolling if content is too long */
+            background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: rgba(83, 104, 120, 0.9); /* Payne Grey */
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-height: 70vh;
+            overflow-y: auto; /* Allow vertical scroll */
+            color: #EAE0C8; /* Pearl */
+            backdrop-filter: blur(10px);
+            font-size: 1rem;
+        }
+
+        .close {
+            color: #EAE0C8; /* Pearl */
+            font-size: 2rem;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <h1>Study Plan Generator</h1>
     <form id="studyPlanForm">
@@ -56,9 +123,63 @@
         <button type="submit">Generate Study Plan</button>
     </form>
 
-    <div id="output">Your study plan will appear here...</div>
+    <!-- Modal -->
+    <div id="studyPlanModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Study Plan</h2>
+            <div id="output">Your study plan will appear here...</div>
+        </div>
+    </div>
 
-    <!-- Link to the external JavaScript file -->
-    <script src="script.js"></script>
+    <script>
+        document.getElementById("studyPlanForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const course_name = document.getElementById("course_name").value.trim();
+            const num_days = document.getElementById("num_days").value.trim();
+            const hours_per_day = document.getElementById("hours_per_day").value.trim();
+
+            const output = document.getElementById("output");
+            output.innerHTML = "<p>Generating study plan... Please wait.</p>";
+
+            try {
+                const response = await fetch("/study-plan", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ course_name, num_days, hours_per_day })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Render the HTML study plan
+                    output.innerHTML = data.roadmap;
+
+                    // Display the modal
+                    document.getElementById("studyPlanModal").style.display = "block";
+                } else {
+                    // Show error message
+                    output.innerHTML = `<p style="color: red;">Error: ${data.error}</p>`;
+                }
+            } catch (err) {
+                // Handle network or unexpected errors
+                output.innerHTML = "<p style='color: red;'>An error occurred while generating the study plan. Please try again later.</p>";
+            }
+        });
+
+        // Close the modal when the user clicks on the close button
+        document.getElementById("closeModal").addEventListener("click", function () {
+            document.getElementById("studyPlanModal").style.display = "none";
+        });
+
+        // Close the modal if the user clicks anywhere outside of the modal content
+        window.onclick = function (event) {
+            if (event.target === document.getElementById("studyPlanModal")) {
+                document.getElementById("studyPlanModal").style.display = "none";
+            }
+        }
+    </script>
 </body>
+
 </html>

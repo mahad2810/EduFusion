@@ -104,12 +104,14 @@
         background-color: #536878;
         color: #EAE0C8;
         border: 1px solid #7a8c9c;
-        padding: 10px 20px;
-        border-radius: 8px;
+        padding: 6px 12px; /* Reduced padding for smaller size */
+        border-radius: 6px; /* Slightly smaller border radius */
         cursor: pointer;
-        margin-right: 10px;
+        margin-right: 8px; /* Reduced margin for better spacing */
+        font-size: 0.875rem; /* Reduced font size */
         transition: background-color 0.3s;
     }
+    
 
     .details .edit-buttons button:hover {
         background-color: #435264;
@@ -370,10 +372,11 @@
       </div>
       
 
-        <div class="edit-buttons">
-            <button id="editButton"><img src="edit-sign.png" alt="Edit"></button>
-            <button id="saveButton" style="display: none;">Save</button>
-        </div>
+      <div class="edit-buttons">
+        <button id="editButton">Edit</button>
+        <button id="saveButton" style="display: none;">Save</button>
+    </div>
+    
     </div>
     <div class="container">
       <div class="tabs">
